@@ -8,3 +8,32 @@
     text-align: right;
     font-family: iransans;
 }
+
+.bg-gray {
+    background: #404E67;
+    color: #dcdcdc;
+}
+
+.logo {
+    max-height: 3.5rem;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.bg-search {
+    background: #dcdcdc;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}

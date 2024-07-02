@@ -1,0 +1,11 @@
+.header {
+    height: 3.5rem;
+}
+
+.sidebar-header {
+    flex: 0 0 14rem;
+}
+
+.body-header {
+    flex: calc(100% - 14rem);
+}
