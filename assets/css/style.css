@@ -8,3 +8,7 @@
     text-align: right;
     font-family: iransans;
 }
+
+svg {
+    cursor: pointer;
+}

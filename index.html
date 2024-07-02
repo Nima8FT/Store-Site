@@ -5,18 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheshmam</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/animate.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body dir="rtl">
 
-    <script src="./assets/js/jquery-3.7.1.min.js"></script>
-    <script src="./assets/js/popper.js"></script>
-    <script src="./assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="./assets/js/grid.js"></script>
+    <header class="header d-flex">
+        <section class=" header-right w-25 bg-info shadow p-3 px-4 d-flex justify-content-between align-items-center">
+            <img src=" ./assets/images/logo.png" alt="Logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-toggle-on"
+                viewBox="0 0 16 16">
+                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
+            </svg>
+        </section>
+        <section class=" header-left w-75 bg-light shadow d-flex justify-content-between align-items-center px-5">
+            <div class="header-left-right w-25 d-flex justify-content-around align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
+                </svg>
+            </div>
+            <div class="header-left-left w-75 d-flex justify-content-start align-items-start ">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Custom Dropdown
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">First Action</a>
+                        <a class="dropdown-item" href="#">Second Action</a>
+                        <a class="dropdown-item" href="#">Third Action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated Action</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </header>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src=" ./assets/js/jquery-3.7.1.min.js">
+    </script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/grid.js"></script> -->
 </body>
 
 </html>
