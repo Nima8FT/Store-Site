@@ -5,55 +5,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheshmam</title>
-    <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/animate.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <link rel="stylesheet" href="./assets/css/style.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body dir="rtl">
 
-    <header class="header d-flex">
-        <section class=" header-right w-25 bg-info shadow p-3 px-4 d-flex justify-content-between align-items-center">
-            <img src=" ./assets/images/logo.png" alt="Logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-toggle-on"
-                viewBox="0 0 16 16">
-                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
-            </svg>
-        </section>
-        <section class=" header-left w-75 bg-light shadow d-flex justify-content-between align-items-center px-5">
-            <div class="header-left-right w-25 d-flex justify-content-around align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
-
+    <header class="header position-fixed right-0 w-100 d-flex justify-content-around z-1 top-0">
+        <!-- Section right -->
+        <section
+            class="sidebar-header bg-gray d-flex justify-content-between align-items-center flex-md-row-reverse px-2">
+            <span class="d-none d-md-inline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
+                    class="bi bi-toggle-on" viewBox="0 0 16 16">
+                    <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
                 </svg>
-            </div>
-            <div class="header-left-left w-75 d-flex justify-content-start align-items-start ">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Custom Dropdown
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">First Action</a>
-                        <a class="dropdown-item" href="#">Second Action</a>
-                        <a class="dropdown-item" href="#">Third Action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated Action</a>
+            </span>
+            <span class="d-inline d-md-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-toggle-off" viewBox="0 0 16 16">
+                    <path
+                        d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
+                </svg>
+            </span>
+            <span>
+                <img class="logo" src="./assets/images/logo.png" alt="Logo">
+            </span>
+            <span class="d-md-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots" viewBox="0 0 16 16">
+                    <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                </svg>
+            </span>
+        </section>
+
+        <!-- Section Left -->
+        <section class="body-header d-flex justify-content-between align-items-center px-5 bg-white shadow">
+
+            <section class="body-header-right">
+                <span class="search-area bg-search p-2 rounded d-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                    <input type="text" class="search-input bg-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search d-md-inline" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </span>
+                <span class="ms-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search d-md-inline d-none" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </span>
+                <span class="d-none d-md-inline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrows-angle-contract d-none" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
+                    </svg>
+                </span>
+            </section>
+
+            <section class="body-header-left">
+                <div class="notification position-relative py-3">
+                    <div class="notification-icon pointer">
+                        <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bell" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                        </svg>
+                        <span class="bg-danger rounded text-white px-1">4</span>
+                    </div>
+                    <div class="notification-menu card position-absolute top-100 start-100">
+                        <div class="card-header bg-white shadow rounded d-flex justify-content-between p-3">
+                            <h5>نوتیفیکشن ها</h5>
+                            <span class="bg-danger rounded text-white p-1 fw-bold">جدید</span>
+                        </div>
+                        <div class="card-body bg-white">
+                            <div class="d-flex justify-content-between align-items-center w-100 py-3">
+                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
+                                <div class="card-body-text">
+                                    <h5 class="h6">نیما ملکوتی خواه</h5>
+                                    <p class="text-small">این یک متن تستی است</p>
+                                    <small class="text-muted">30 دقیقه پیش</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center w-100 py-3 border-top">
+                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
+                                <div class="card-body-text">
+                                    <h5 class="h6">نیما ملکوتی خواه</h5>
+                                    <p class="text-small">این یک متن تستی است</p>
+                                    <small class="text-muted">30 دقیقه پیش</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center w-100 py-3 border-top">
+                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
+                                <div class="card-body-text">
+                                    <h5 class="h6">نیما ملکوتی خواه</h5>
+                                    <p class="text-small">این یک متن تستی است</p>
+                                    <small class="text-muted">30 دقیقه پیش</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
         </section>
+
     </header>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
