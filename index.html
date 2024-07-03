@@ -82,50 +82,59 @@
             </section>
 
             <section class="body-header-left">
-                <div class="notification position-relative py-3">
-                    <div class="notification-icon pointer">
-                        <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                <span class="notification position-relative">
+                    <span class="notification-icon pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-bell" viewBox="0 0 16 16">
                             <path
                                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                         </svg>
-                        <span class="bg-danger rounded text-white px-1">4</span>
-                    </div>
-                    <div class="notification-menu card position-absolute top-100 start-100">
-                        <div class="card-header bg-white shadow rounded d-flex justify-content-between p-3">
-                            <h5>نوتیفیکشن ها</h5>
-                            <span class="bg-danger rounded text-white p-1 fw-bold">جدید</span>
+                        <sub class="badge bg-danger">4</sub>
+                    </span>
+                    <div
+                        class="notification-menu position-absolute start-0 top-100 mt-3 bg-white shadow rounded d-none">
+                        <div class=" notification-menu-head d-flex justify-content-between p-3">
+                            <span class="px-2">نوتیفیکشن ها</span>
+                            <span class="badge bg-danger px-2">جدید</span>
                         </div>
-                        <div class="card-body bg-white">
-                            <div class="d-flex justify-content-between align-items-center w-100 py-3">
-                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
-                                <div class="card-body-text">
-                                    <h5 class="h6">نیما ملکوتی خواه</h5>
-                                    <p class="text-small">این یک متن تستی است</p>
-                                    <small class="text-muted">30 دقیقه پیش</small>
+                        <ul class="notification-menu-item list-group px-0">
+                            <li class=" list-group-item list-group-item-action mt-2">
+                                <div class="media d-flex">
+                                    <img class="notification-img rounded m-2" src="./assets/images/avatar-2.jpg"
+                                        alt="avatar">
+                                    <div class="media-body">
+                                        <h5 class="h6">نیما ملکوتی خواه</h5>
+                                        <p class="font-medium">این یک متن تستی است</p>
+                                        <p class="font-small">30 دقیقه پیش</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </li>
+                            <li class=" list-group-item list-group-item-action mt-2">
+                                <div class="media d-flex">
+                                    <img class="notification-img rounded m-2" src="./assets/images/avatar-2.jpg"
+                                        alt="avatar">
+                                    <div class="media-body">
+                                        <h5 class="h6">نیما ملکوتی خواه</h5>
+                                        <p class="font-medium">این یک متن تستی است</p>
+                                        <p class="font-small">30 دقیقه پیش</p>
+                                    </div>
+                                </div>
+                            </li>
 
-                            <div class="d-flex justify-content-between align-items-center w-100 py-3 border-top">
-                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
-                                <div class="card-body-text">
-                                    <h5 class="h6">نیما ملکوتی خواه</h5>
-                                    <p class="text-small">این یک متن تستی است</p>
-                                    <small class="text-muted">30 دقیقه پیش</small>
+                            <li class=" list-group-item list-group-item-action mt-2">
+                                <div class="media d-flex">
+                                    <img class="notification-img rounded m-2" src="./assets/images/avatar-2.jpg"
+                                        alt="avatar">
+                                    <div class="media-body">
+                                        <h5 class="h6">نیما ملکوتی خواه</h5>
+                                        <p class="font-medium">این یک متن تستی است</p>
+                                        <p class="font-small">30 دقیقه پیش</p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center w-100 py-3 border-top">
-                                <img class="notification-img" src="./assets/images/avatar-2.jpg" alt="Avatar">
-                                <div class="card-body-text">
-                                    <h5 class="h6">نیما ملکوتی خواه</h5>
-                                    <p class="text-small">این یک متن تستی است</p>
-                                    <small class="text-muted">30 دقیقه پیش</small>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </span>
             </section>
 
         </section>
