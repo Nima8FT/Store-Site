@@ -10,11 +10,19 @@
     flex: calc(100% - 14rem);
 }
 
-.notification-menu {
+.notification-menu,
+.comment-menu {
     width: 16rem;
 }
 
 .notification-img {
     width: 3rem;
     max-height: 50px;
+}
+
+.comment-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: green;
 }
