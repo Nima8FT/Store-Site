@@ -37,3 +37,11 @@ input {
 input:focus {
     outline: none;
 }
+
+.font-small {
+    font-size: 12px;
+}
+
+.font-medium {
+    font-size: 14px;
+}

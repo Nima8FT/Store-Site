@@ -9,3 +9,12 @@
 .body-header {
     flex: calc(100% - 14rem);
 }
+
+.notification-menu {
+    width: 16rem;
+}
+
+.notification-img {
+    width: 3rem;
+    max-height: 50px;
+}
