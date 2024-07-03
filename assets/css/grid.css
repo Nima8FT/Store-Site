@@ -26,3 +26,25 @@
     border-radius: 100%;
     background: green;
 }
+
+.comment-menu-item {
+    max-height: 300px;
+    overflow: auto;
+}
+
+.comment-menu-item::-webkit-scrollbar {
+    display: none;
+}
+
+.prof-avatar {
+    width: 2rem;
+}
+
+.user-profile-head span {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.user-profile-menu {
+    width: 14rem;
+}
