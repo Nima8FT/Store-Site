@@ -38,6 +38,10 @@ input:focus {
     outline: none;
 }
 
-.text-small {
-    font-size: 15px;
+.font-small {
+    font-size: 12px;
+}
+
+.font-medium {
+    font-size: 14px;
 }
