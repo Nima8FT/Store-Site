@@ -48,3 +48,19 @@
 .user-profile-menu {
     width: 14rem;
 }
+
+@media only screen and (max-width: 767.98px) {
+    .header {
+        display: block !important;
+    }
+
+    .sidebar-header {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .body-header {
+        padding: 5px;
+        display: none !important;
+    }
+}
