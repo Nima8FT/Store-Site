@@ -64,3 +64,14 @@
         display: none !important;
     }
 }
+
+main {
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    margin-top: 3.5rem;
+}
+
+.sidebar-menu {
+    width: 14rem;
+    height: 100%;
+}

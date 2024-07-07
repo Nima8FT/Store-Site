@@ -13,6 +13,25 @@ svg {
     cursor: pointer;
 }
 
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: #dcdcdc !important;
+    opacity: 0.8;
+    transition: all ease-in-out 0.2s;
+}
+
+a:hover {
+    opacity: 1;
+}
+
 .bg-gray {
     background: #404E67;
     color: #dcdcdc;
@@ -30,18 +49,14 @@ svg {
     background: #dcdcdc;
 }
 
-input {
-    border: none;
-}
-
-input:focus {
-    outline: none;
-}
-
 .font-small {
     font-size: 12px;
 }
 
 .font-medium {
     font-size: 14px;
+}
+
+.color-txt {
+    color: #dcdcdc;
 }
