@@ -69,3 +69,40 @@
         display: none !important;
     }
 }
+
+main {
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    margin-top: 3.5rem;
+}
+
+.sidebar-menu {
+    width: 14rem;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-link {
+    transition: all ease-in-out 0.2s;
+}
+
+.sidebar-link:hover {
+    color: #FE8A7D !important;
+}
+
+.sidebar-group-link-active {
+    border-right: #FE8A7D;
+}
+
+.sidebar-dropdown-head {
+    color: #dcdcdc;
+    transition: all ease-in-out 0.2s;
+}
+
+.sidebar-dropdown-head:hover {
+    color: #ffffff;
+}
