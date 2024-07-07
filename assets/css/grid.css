@@ -106,3 +106,7 @@ main {
 .sidebar-dropdown-head:hover {
     color: #ffffff;
 }
+
+.main-body {
+    margin-right: 14rem;
+}
