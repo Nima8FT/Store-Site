@@ -1,5 +1,6 @@
 .header {
     height: 3.5rem;
+    z-index: 100;
 }
 
 .sidebar-header {
@@ -67,6 +68,14 @@
 
     .body-header-right {
         display: none !important;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .main-body {
+        margin-right: 0 !important;
     }
 }
 
