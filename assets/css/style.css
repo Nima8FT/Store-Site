@@ -57,6 +57,18 @@ a:hover {
     font-size: 14px;
 }
 
-.color-txt {
-    color: #dcdcdc;
+.bg-custom-yellow {
+    background: linear-gradient(to right, #feb798, #fe9365);
+}
+
+.bg-custom-green {
+    background: linear-gradient(to right, #0df3a3, #0ac282);
+}
+
+.bg-custom-pink {
+    background: linear-gradient(to right, #fe909d, #fe5d78);
+}
+
+.bg-custom-blue {
+    background: linear-gradient(to right, #01dbdf, #01a9ac);
 }
