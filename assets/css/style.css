@@ -72,3 +72,11 @@ a:hover {
 .bg-custom-blue {
     background: linear-gradient(to right, #01dbdf, #01a9ac);
 }
+
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}

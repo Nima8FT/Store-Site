@@ -63,15 +63,14 @@
 
     .body-header {
         padding: 5px;
-        display: none !important;
     }
 
     .body-header-right {
         display: none !important;
     }
 
-    aside {
-        display: none;
+    main {
+        margin-top: 2.5rem !important;
     }
 
     .main-body {
@@ -116,6 +115,10 @@ main {
     color: #ffffff;
 }
 
-.main-body {
-    margin-right: 14rem;
+.mr-aside {
+    margin-right: 14rem !important;
+}
+
+.user-profile-menu * {
+    color: black !important;
 }
