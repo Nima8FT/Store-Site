@@ -18,13 +18,13 @@
         <!-- Section right -->
         <section
             class="sidebar-header bg-gray d-flex justify-content-between align-items-center flex-md-row-reverse px-2">
-            <span class="d-none d-md-inline">
+            <span class="d-none d-md-inline show-menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-toggle-on" viewBox="0 0 16 16">
                     <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
                 </svg>
             </span>
-            <span class="d-inline d-md-none">
+            <span class="d-inline hide-menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-toggle-off" viewBox="0 0 16 16">
                     <path
@@ -34,7 +34,7 @@
             <span>
                 <img class="logo" src="./assets/images/logo.png" alt="Logo">
             </span>
-            <span class="d-md-none">
+            <span class="d-md-none show-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path
@@ -44,12 +44,12 @@
         </section>
 
         <!-- Section Left -->
-        <section class="body-header d-flex justify-content-between align-items-center px-5 bg-white shadow">
+        <section class="body-header d-md-flex justify-content-between align-items-center px-5 bg-white shadow">
 
             <section class="body-header-right">
                 <span class="search-area bg-search p-2 rounded d-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
-                        viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x close-search" viewBox="0 0 16 16">
                         <path
                             d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                     </svg>
@@ -60,21 +60,21 @@
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </span>
-                <span class="ms-5">
+                <span class="ms-5 show-search">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search d-md-inline d-none" viewBox="0 0 16 16">
+                        class="bi bi-search d-md-inline" viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </span>
-                <span class="d-none d-md-inline">
+                <span class="d-md-inline mx-3 full-screen">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrows-angle-contract d-none" viewBox="0 0 16 16">
+                        class="bi bi-arrows-angle-contract d-none full" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707" />
                     </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+                        class="bi bi-arrows-angle-expand none-full" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707" />
                     </svg>
@@ -395,12 +395,12 @@
 
         </aside>
 
-        <article class="main-body p-4">
+        <article class="main-body p-4 mr-aside">
 
             <section class="main-body-top row">
 
                 <!-- box -->
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-custom-yellow text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -424,7 +424,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-custom-green text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -448,7 +448,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-custom-pink text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -472,7 +472,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-custom-blue text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -496,7 +496,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-danger text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -520,7 +520,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-success text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -544,7 +544,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-12 pointer">
                     <div class="mb-4 card bg-warning text-white">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-body-right">
@@ -649,13 +649,10 @@
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- <script src=" ./assets/js/jquery-3.7.1.min.js">
+    <script src=" ./assets/js/jquery-3.7.1.min.js">
     </script>
     <script src="./assets/js/bootstrap.min.js"></script>
-    <script src="./assets/js/grid.js"></script> -->
+    <script src="./assets/js/grid.js"></script>
 </body>
 
 </html>
