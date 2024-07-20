@@ -56,7 +56,7 @@
                             <td>38</td>
                             <td>22</td>
                             <td class="text-left">
-                                <a href="{{ route("admin.market.store.addToStore") }}"
+                                <a href="{{ route("market.admin.market.store.addToStore") }}"
                                     class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>
                                     افزایش موجودی
@@ -75,7 +75,7 @@
                             <td>38</td>
                             <td>22</td>
                             <td class="text-left">
-                                <a href="{{ route("admin.market.store.addToStore") }}"
+                                <a href="{{ route("market.admin.market.store.addToStore") }}"
                                     class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>
                                     افزایش موجودی
@@ -94,7 +94,7 @@
                             <td>38</td>
                             <td>22</td>
                             <td class="text-left">
-                                <a href="{{ route("admin.market.store.addToStore") }}"
+                                <a href="{{ route("market.admin.market.store.addToStore") }}"
                                     class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>
                                     افزایش موجودی

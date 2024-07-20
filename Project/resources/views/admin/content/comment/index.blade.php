@@ -10,7 +10,7 @@
     <ol class="breadcrumb p-3">
         <li class="breadcrumb-item d-none"><a href="#">Home</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#">بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
         <li class="breadcrumb-item  font-size-12 active" aria-current="page">نظرات</li>
     </ol>
 </nav>
@@ -56,7 +56,7 @@
                             <td>شارژر</td>
                             <td>در انتظار تایید</td>
                             <td class="width-16 text-left">
-                                <a href="{{ route('market.comment.create') }}" class="btn btn-primary btn-sm fw-bold">
+                                <a href="{{ route('content.comment.create') }}" class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-eye p-1"></i>
                                     نمایش
                                 </a>

@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin;
+use App\Http\Controllers\Admin\Content\FAQController;
+use App\Http\Controllers\Admin\Content\MenuController;
+use App\Http\Controllers\Admin\Content\PageController;
+use App\Http\Controllers\Admin\Content\PostController;
 use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\PropertyController;
@@ -12,6 +16,8 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Market\CommentController;
 use App\Http\Controllers\Admin\Market\PaymentController;
 use App\Http\Controllers\Admin\Market\CategoryController;
+use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
+use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 use App\Http\Controllers\Admin\Market\DeliveryController;
 use App\Http\Controllers\Admin\Market\Discount\CopanController;
 use App\Http\Controllers\Admin\Market\Discount\AmazingSaleController;
@@ -23,7 +29,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
 
     //Market
-    Route::prefix('market')->group(function () {
+    Route::prefix('market')->as('market.')->group(function () {
         Route::resource('category', CategoryController::class);
         Route::resource('brand', BrandController::class);
         Route::resource('comment', CommentController::class);
@@ -58,7 +64,16 @@ Route::prefix('admin')->group(function () {
 
         //store
         Route::resource('/store', StoreController::class);
-        Route::get('add-to-store', [StoreController::class,'addToStore'])->name('admin.market.store.addToStore');
+        Route::get('add-to-store', [StoreController::class, 'addToStore'])->name('admin.market.store.addToStore');
+    });
+
+    Route::prefix('content')->as('content.')->group(function () {
+        Route::resource('category', ContentCategoryController::class);
+        Route::resource('comment', ContentCommentController::class);
+        Route::resource('faq', FAQController::class);
+        Route::resource('menu', MenuController::class);
+        Route::resource('page', PageController::class);
+        Route::resource('post', PostController::class);
     });
 
 });

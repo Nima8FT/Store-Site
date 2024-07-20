@@ -24,7 +24,7 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('delivery.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد روش
+                <a href="{{ route('market.delivery.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد روش
                     ارسال جدید</a>
                 <div class="width-16">
                     <input type="text" placeholder="جستجو" class="form-control form-control-sm form-text">

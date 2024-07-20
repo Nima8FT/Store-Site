@@ -25,7 +25,7 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('common-discount.index') }}"
+                <a href="{{ route('market.common-discount.index') }}"
                     class="btn btn-primary btn-sm text-white p-2 fw-bold">بازگشت</a>
             </section>
 

@@ -24,7 +24,7 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد
+                <a href="{{ route('market.product.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد
                     کالای جدید</a>
                 <div class="width-16">
                     <input type="text" placeholder="جستجو" class="form-control form-control-sm form-text">

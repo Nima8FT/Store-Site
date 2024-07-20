@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>تخفیف عمومی</title>
+<title>پیج ساز</title>
 @endsection
 
 @section('content')
@@ -10,8 +10,8 @@
     <ol class="breadcrumb p-3">
         <li class="breadcrumb-item d-none"><a href="#">Home</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#">بخش فروش</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">تخفیف عمومی</li>
+        <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">پیج ساز</li>
     </ol>
 </nav>
 
@@ -19,14 +19,15 @@
     <section class="col-12">
         <section class="main-body-container">
             <section class="main-body-container-header">
-                <h4 class="fw-bold">ایجاد تخفیف عمومی</h4>
+                <h4 class="fw-bold">
+                    پیج ساز
+                </h4>
             </section>
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('market.common-discount.create') }}"
-                    class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد تخفیف
-                    عمومی</a>
+                <a href="{{ route('content.page.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد
+                    پیج جدید</a>
                 <div class="width-16">
                     <input type="text" placeholder="جستجو" class="form-control form-control-sm form-text">
                 </div>
@@ -37,11 +38,8 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">درصد تخفیف</th>
-                            <th scope="col">سقف تخفیف</th>
-                            <th scope="col">عنوان مناسبت</th>
-                            <th scope="col">تاریخ شروع</th>
-                            <th scope="col">تاریخ پایان</th>
+                            <th scope="col">عنوان</th>
+                            <th scope="col">ادرس پیج</th>
                             <th scope="col" class="width-16 text-right">
                                 <i class="fa fa-cogs mx-2"></i>
                                 تنظیمات
@@ -51,11 +49,9 @@
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>15%</td>
-                            <td>25,000 تومان</td>
-                            <td>تولد من</td>
-                            <td>24 اردیبهشت 99</td>
-                            <td>31 اردیبهشت 99</td>
+                            <td>درباره ما</td>
+                            <td>about</td>
+                            </td>
                             <td class="width-16 text-left">
                                 <a href="#" class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>
@@ -69,11 +65,9 @@
                         </tr>
                         <tr>
                             <th scope="row">1</th>
-                            <td>15%</td>
-                            <td>25,000 تومان</td>
-                            <td>تولد من</td>
-                            <td>24 اردیبهشت 99</td>
-                            <td>31 اردیبهشت 99</td>
+                            <td>درباره ما</td>
+                            <td>about</td>
+                            </td>
                             <td class="width-16 text-left">
                                 <a href="#" class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>
@@ -87,11 +81,9 @@
                         </tr>
                         <tr>
                             <th scope="row">1</th>
-                            <td>15%</td>
-                            <td>25,000 تومان</td>
-                            <td>تولد من</td>
-                            <td>24 اردیبهشت 99</td>
-                            <td>31 اردیبهشت 99</td>
+                            <td>درباره ما</td>
+                            <td>about</td>
+                            </td>
                             <td class="width-16 text-left">
                                 <a href="#" class="btn btn-primary btn-sm fw-bold">
                                     <i class="fa fa-edit p-1"></i>

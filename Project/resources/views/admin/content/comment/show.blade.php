@@ -10,7 +10,7 @@
     <ol class="breadcrumb p-3">
         <li class="breadcrumb-item d-none"><a href="#">Home</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#">بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">نظرات</a></li>
         <li class="breadcrumb-item  font-size-12 active" aria-current="page">نمایش نظر ها</li>
     </ol>
@@ -27,7 +27,7 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('market.comment.index') }}"
+                <a href="{{ route('content.comment.index') }}"
                     class="btn btn-primary btn-sm text-white p-2 fw-bold">بازگشت</a>
             </section>
 

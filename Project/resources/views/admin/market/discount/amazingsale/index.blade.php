@@ -24,7 +24,7 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('amazing-sale.create') }}"
+                <a href="{{ route('market.amazing-sale.create') }}"
                     class="btn btn-primary btn-sm text-white p-2 fw-bold">افزودن کالا به لیست فروش شگفت انگیز</a>
                 <div class="width-16">
                     <input type="text" placeholder="جستجو" class="form-control form-control-sm form-text">

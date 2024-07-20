@@ -16,12 +16,12 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route("category.index") }}">دسته بندی</a>
-                    <a href="{{ route("property.index") }}">فرم کالا</a>
-                    <a href="{{ route("brand.index") }}">برندها</a>
-                    <a href="{{ route("product.index") }}">کالاها</a>
-                    <a href="{{ route("store.index") }}">انبار</a>
-                    <a href="{{ route("comment.index") }}">نظرات</a>
+                    <a href="{{ route("market.category.index") }}">دسته بندی</a>
+                    <a href="{{ route("market.property.index") }}">فرم کالا</a>
+                    <a href="{{ route("market.brand.index") }}">برندها</a>
+                    <a href="{{ route("market.product.index") }}">کالاها</a>
+                    <a href="{{ route("market.store.index") }}">انبار</a>
+                    <a href="{{ route("market.comment.index") }}">نظرات</a>
                 </section>
             </section>
 
@@ -32,12 +32,12 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route("admin.market.order.newOrders") }}"> جدید</a>
-                    <a href="{{ route("admin.market.order.sending") }}">در حال ارسال</a>
-                    <a href="{{ route("admin.market.order.unpaid") }}">پرداخت نشده</a>
-                    <a href="{{ route("admin.market.order.canceled") }}">باطل شده</a>
-                    <a href="{{ route("admin.market.order.returned") }}">مرجوعی</a>
-                    <a href="{{ route("admin.market.order.all") }}">تمام سفارشات</a>
+                    <a href="{{ route("market.admin.market.order.newOrders") }}"> جدید</a>
+                    <a href="{{ route("market.admin.market.order.sending") }}">در حال ارسال</a>
+                    <a href="{{ route("market.admin.market.order.unpaid") }}">پرداخت نشده</a>
+                    <a href="{{ route("market.admin.market.order.canceled") }}">باطل شده</a>
+                    <a href="{{ route("market.admin.market.order.returned") }}">مرجوعی</a>
+                    <a href="{{ route("market.admin.market.order.all") }}">تمام سفارشات</a>
                 </section>
             </section>
 
@@ -48,10 +48,10 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route("admin.market.payment.all") }}">تمام پرداخت ها</a>
-                    <a href="{{ route("admin.market.payment.online") }}">پرداخت های آنلاین</a>
-                    <a href="{{ route("admin.market.payment.offline") }}">پرداخت های آفلاین</a>
-                    <a href="{{ route("admin.market.payment.attandance") }}">پرداخت در محل</a>
+                    <a href="{{ route("market.admin.market.payment.all") }}">تمام پرداخت ها</a>
+                    <a href="{{ route("market.admin.market.payment.online") }}">پرداخت های آنلاین</a>
+                    <a href="{{ route("market.admin.market.payment.offline") }}">پرداخت های آفلاین</a>
+                    <a href="{{ route("market.admin.market.payment.attandance") }}">پرداخت در محل</a>
                 </section>
             </section>
 
@@ -62,13 +62,13 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route("copan.index") }}">کپن تخفیف</a>
-                    <a href="{{ route("common-discount.index") }}">تخفیف عمومی</a>
-                    <a href="{{ route("amazing-sale.index") }}">فروش شگفت انگیز</a>
+                    <a href="{{ route("market.copan.index") }}">کپن تخفیف</a>
+                    <a href="{{ route("market.common-discount.index") }}">تخفیف عمومی</a>
+                    <a href="{{ route("market.amazing-sale.index") }}">فروش شگفت انگیز</a>
                 </section>
             </section>
 
-            <a href="{{ route("delivery.index") }}" class="sidebar-link">
+            <a href="{{ route("market.delivery.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>روش های ارسال</span>
             </a>
@@ -76,27 +76,27 @@
 
 
             <section class="sidebar-part-title">بخش محتوی</section>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.category.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>دسته بندی</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.post.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>پست ها</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.comment.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>نظرات</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.menu.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>منو</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.faq.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>سوالات متداول</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="{{ route("content.page.index") }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>پیج ساز</span>
             </a>
