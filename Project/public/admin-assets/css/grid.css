@@ -271,9 +271,9 @@ button {
 }
 
 .sidebar-dropdown a::before,
-button::before {
-    content: '»';
-    margin: .8rem;
+{
+content: '»';
+margin: .8rem;
 }
 
 .sidebar-dropdown a:hover,

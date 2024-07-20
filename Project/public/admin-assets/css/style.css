@@ -34,3 +34,19 @@
 .bg-custom-blue {
     background: linear-gradient(to right, #01dbdf, #01a9ac);
 }
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.width-16 {
+    width: 16rem;
+}
+
+.main-body table {
+    font-size: .8rem;
+}
+
+.max-height-2 {
+    max-height: 2rem;
+}
