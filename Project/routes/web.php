@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\PropertyController;
 use App\Http\Controllers\Admin\Market\StoreController;
+use App\Http\Controllers\Admin\Notify\EmailController;
+use App\Http\Controllers\Admin\Notify\SMSController;
 use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\User\PremissionController;
@@ -85,6 +87,11 @@ Route::prefix('admin')->group(function () {
         Route::resource('customer', CustomerController::class);
         Route::resource('role', RoleController::class);
         Route::resource('premission', PremissionController::class);
+    });
+
+    Route::prefix('notify')->as('notify.')->group(function () {
+        Route::resource('email', EmailController::class);
+        Route::resource('sms', SMSController::class);
     });
 
 });
