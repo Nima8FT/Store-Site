@@ -9,6 +9,10 @@ use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\PropertyController;
 use App\Http\Controllers\Admin\Market\StoreController;
+use App\Http\Controllers\Admin\User\AdminUserController;
+use App\Http\Controllers\Admin\User\CustomerController;
+use App\Http\Controllers\Admin\User\PremissionController;
+use App\Http\Controllers\Admin\User\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Market\BrandController;
 use App\Http\Controllers\Admin\Market\OrderController;
@@ -74,6 +78,13 @@ Route::prefix('admin')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('page', PageController::class);
         Route::resource('post', PostController::class);
+    });
+
+    Route::prefix('user')->as('user.')->group(function () {
+        Route::resource('admin-user', AdminUserController::class);
+        Route::resource('customer', CustomerController::class);
+        Route::resource('role', RoleController::class);
+        Route::resource('premission', PremissionController::class);
     });
 
 });
