@@ -77,6 +77,7 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('content')->as('content.')->group(function () {
         Route::resource('category', ContentCategoryController::class);
+        Route::get('/category/status/{postCategory}', [ContentCategoryController::class, 'status'])->name('category.status');
         Route::resource('comment', ContentCommentController::class);
         Route::resource('faq', FAQController::class);
         Route::resource('menu', MenuController::class);

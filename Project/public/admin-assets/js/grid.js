@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
    function removeAllSidebarToggleClass() {
       $('#sidebar-toggle-hide').removeClass('d-md-inline');
       $('#sidebar-toggle-hide').removeClass('d-none');
