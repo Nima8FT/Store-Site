@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>ایجاد سوال</title>
+<title>ویرایش سوال</title>
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">سوالات متداول</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ایجاد سوالات متداول</li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ویرایش سوالات متداول</li>
     </ol>
 </nav>
 
@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
             <section class="main-body-container-header">
-                <h4 class="fw-bold">ایجاد سوال</h4>
+                <h4 class="fw-bold">ویرایش سوال</h4>
             </section>
 
             <section
@@ -30,14 +30,16 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('content.faq.store') }}" method="POST" id="form">
+                <form action="{{ route('content.faq.update', $faq->id) }}" method="POST" id="form">
                     @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $faq->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $faq->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -45,7 +47,8 @@
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="tags">تگ ها</label>
-                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags') }}">
+                            <input type="hidden" class="form-control" name="tags" id="tags"
+                                value="{{ old('tags', $faq->tags) }}">
                             <select id="select_tags" class="select2 form-control" multiple>
                             </select>
                             @error('tags')
@@ -55,7 +58,7 @@
                         <div class="form-group py-2 mb-2">
                             <label for="">پرسش</label>
                             <textarea name="question" id="question" class="form-control form-control-sm"
-                                rows="6">{{old('question') }}</textarea>
+                                rows="6">{{old('question', $faq->question) }}</textarea>
                             @error('question')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -63,7 +66,7 @@
                         <div class="form-group py-2 mb-2">
                             <label for="">پاسخ</label>
                             <textarea name="answer" id="answer" class="form-control form-control-sm"
-                                rows="6">{{old('answer') }}</textarea>
+                                rows="6">{{old('answer', $faq->answer) }}</textarea>
                             @error('answer')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror

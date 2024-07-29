@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $postCategories = PostCategory::orderBy('created_at', 'desc')->paginate(10);
+        $postCategories = PostCategory::orderBy('created_at', 'desc')->simplePaginate(10);
         return view("admin.content.category.test", compact("postCategories"));
     }
 

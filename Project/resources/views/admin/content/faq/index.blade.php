@@ -24,8 +24,8 @@
 
             <section
                 class="main-body-container-buttons d-flex justify-content-between align-items-center mb-3 border-bottom py-4">
-                <a href="{{ route('content.faq.create') }}"
-                    class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد پرسش جدید</a>
+                <a href="{{ route('content.faq.create') }}" class="btn btn-primary btn-sm text-white p-2 fw-bold">ایجاد
+                    پرسش جدید</a>
                 <div class="width-16">
                     <input type="text" placeholder="جستجو" class="form-control form-control-sm form-text">
                 </div>
@@ -35,9 +35,11 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">پرسش</th>
                             <th scope="col">خلاصه پاسخ</th>
+                            <th scope="col">اسلاگ</th>
+                            <th scope="col">وضعیت</th>
+                            <th scope="col">تگ ها</th>
                             <th scope="col" class="width-16 text-right">
                                 <i class="fa fa-cogs mx-2"></i>
                                 تنظیمات
@@ -45,67 +47,111 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>چجوری میتوانیم ثبت نام کنیم</td>
-                            <td>
-                                <p class="truncate-text">بخش ثبت نام مراجعه کنید و بعد از ان به بخش های زیرین ان بروید
-                                    فرم ثبت نام را پیدا کنید اطلاعات خودتان را</p>
-                            </td>
-                            <td class="width-16 text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>چجوری میتوانیم ثبت نام کنیم</td>
-                            <td>
-                                <p class="truncate-text">بخش ثبت نام مراجعه کنید و بعد از ان به بخش های زیرین ان بروید
-                                    فرم ثبت نام را پیدا کنید
-                                    اطلاعات خودتان را</p>
-                            </td>
-                            <td class="width-16 text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>چجوری میتوانیم ثبت نام کنیم</td>
-                            <td>
-                                <p class="truncate-text">بخش ثبت نام مراجعه کنید و بعد از ان به بخش های زیرین ان بروید
-                                    فرم ثبت نام را پیدا کنید
-                                    اطلاعات خودتان را</p>
-                            </td>
-                            <td class="width-16 text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($faqs as $faq)                        
+                            <tr>
+                                <td>
+                                    <p class="truncate-text">{{ $faq->question }}</p>
+                                </td>
+                                <td>
+                                    <p class="truncate-text">{{ $faq->answer }}</p>
+                                </td>
+                                <td>
+                                    <p class="truncate-text">{{ $faq->slug }}</p>
+                                </td>
+                                <td>
+                                    <p class="truncate-text">{{ $faq->tags }}</p>
+                                </td>
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" id="{{ $faq->id }}" onchange="ChangeStatus({{ $faq->id }})"
+                                            data-url="{{ route('content.faq.status', $faq->id) }}" @if ($faq->status === 1)
+                                            checked @endif>
+                                    </label>
+                                </td>
+                                <td class="width-16 text-left">
+                                    <a href="{{ route('content.faq.edit', $faq->id) }}"
+                                        class="btn btn-primary btn-sm fw-bold">
+                                        <i class="fa fa-edit p-1"></i>
+                                        ویرایش
+                                    </a>
+                                    <form class="d-inline" action="{{ route('content.faq.destroy', $faq->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button type="submit" class="btn btn-danger btn-sm mx-3 fw-bold delete">
+                                            <i class="fa fa-trash-alt p-1"></i>
+                                            حذف
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
         </section>
     </section>
 </section>
+
+
+@endsection
+
+@section('script')
+
+<script>
+    function ChangeStatus(id) {
+        var element = $('#' + id);
+        var url = element.attr('data-url');
+        var element_value = !element.prop('checked');
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (response) {
+                if (response.status) {
+                    if (response.checked) {
+                        toastSuccess('سوال با موفقیت فعال شد');
+                        element.prop('checked', true);
+                    }
+                    else {
+                        toastSuccess('سوال با موفقیت غیر فعال شد');
+                        element.prop('checked', false);
+                    }
+                }
+                else {
+                    toastError('ارتباط برقرار نشد');
+                    element.prop('checked', element_value);
+                }
+            }
+        });
+
+        function toastSuccess(message) {
+            var html = '<div class="toast" data-delay="500"><div class="toast-body py-3 d-flex bg-success text-white">' +
+                '<strong class="mr-auto">' + message + '</strong>' +
+                '<button type="button" class="close" data-dismiss="toast" aria-label="Close">' +
+                '<span aria-hidde="true">&times;</span>' +
+                '</button></div></div>';
+
+            $('.toast-wrapper').append(html);
+            $('.toast').toast('show').delay(3000).queue(function () {
+                $(this).remove();
+            });
+        }
+
+        function toastError(message) {
+            var html = '<div class="toast" data-delay="500"><div class="toast-body py-3 d-flex bg-danger text-white">' +
+                '<strong class="mr-auto">' + message + '</strong>' +
+                '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">' +
+                '<span aria-hidde="true">&times;</span>' +
+                '</button></div></div>';
+
+            $('.toast-wrapper').append(html);
+            $('.toast').toast('show').delay(3000).queue(function () {
+                $(this).remove();
+            });
+        }
+    }
+</script>
+
+@include('admin.alerts.sweetalert.confirm-delete', ['class_name' => 'delete'])
 
 @endsection

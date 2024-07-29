@@ -158,6 +158,8 @@ return [
         "category_id" => "دسته بندی",
         "tags" => "برچسب ها",
         "summary" => "خلاصه",
+        "question" => "پرسش",
+        "answer" => "پاسخ",
 
     ],
 ];

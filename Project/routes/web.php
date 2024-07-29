@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/category/status/{postCategory}', [ContentCategoryController::class, 'status'])->name('category.status');
         Route::resource('comment', ContentCommentController::class);
         Route::resource('faq', FAQController::class);
+        Route::get('/faq/status/{faq}', [FAQController::class, 'status'])->name('faq.status');
         Route::resource('menu', MenuController::class);
         Route::resource('page', PageController::class);
         Route::resource('post', PostController::class);
