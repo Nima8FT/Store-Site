@@ -32,12 +32,14 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('content.page.store') }}" method="POST" id="form">
+                <form action="{{ route('content.page.update', $page->id) }}" method="POST" id="form">
                     @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="">عنوان</label>
-                            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control"
+                                value="{{ old('title', $page->title) }}">
                             @error('title')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -45,8 +47,9 @@
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $page->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $page->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -54,7 +57,8 @@
                         </div>
                         <div class="form-group col-12 py-2">
                             <label for="tags">تگ ها</label>
-                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags') }}">
+                            <input type="hidden" class="form-control" name="tags" id="tags"
+                                value="{{ old('tags', $page->tags) }}">
                             <select id="select_tags" class="select2 form-control" multiple>
                             </select>
                             @error('tags')
@@ -63,7 +67,8 @@
                         </div>
                         <div class="form-group py-2 mb-2">
                             <label for="">توضیحات</label>
-                            <textarea name="body" id="body" class="form-control form-control-sm" rows="6">{{ old('body') }}</textarea>
+                            <textarea name="body" id="body" class="form-control form-control-sm"
+                                rows="6">{{ old('body', $page->body) }}</textarea>
                             @error('body')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
