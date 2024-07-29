@@ -83,6 +83,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('menu', MenuController::class);
         Route::resource('page', PageController::class);
         Route::resource('post', PostController::class);
+        Route::get('/post/status/{post}', [PostController::class, 'status'])->name('post.status');
+        Route::get('/post/commentable/{post}', [PostController::class, 'commentable'])->name('post.commentable');
     });
 
     Route::prefix('user')->as('user.')->group(function () {

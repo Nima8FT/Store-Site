@@ -21,21 +21,20 @@ class PostCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        //you use regex
         if ($this->isMethod("POST")) {
             return [
-                'name' => 'required',
+                'name' => 'required|max:120|min:2',
                 'description' => 'required',
-                'slug' => 'nullable',
-                'image' => 'required',
-                'status' => 'required|numeric',
+                'image' => 'required|image|mimes:png,jpeg,jpg,gif',
+                'status' => 'required|numeric|in:0,1',
                 'tags' => 'required',
             ];
         } else {
             return [
                 'name' => 'required',
                 'description' => 'required',
-                'slug' => 'nullable',
-                'image' => '',
+                'image' => 'image|mimes:png,jpeg,jpg,gif',
                 'status' => 'required|numeric|in:0,1',
                 'tags' => 'required',
             ];
