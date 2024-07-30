@@ -82,6 +82,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('faq', FAQController::class);
         Route::get('/faq/status/{faq}', [FAQController::class, 'status'])->name('faq.status');
         Route::resource('menu', MenuController::class);
+        Route::get('/menu/status/{menu}', [MenuController::class, 'status'])->name('menu.status');
         Route::resource('page', PageController::class);
         Route::get('/page/status/{page}', [PageController::class, 'status'])->name('page.status');
         Route::resource('post', PostController::class);

@@ -160,6 +160,7 @@ return [
         "summary" => "خلاصه",
         "question" => "پرسش",
         "answer" => "پاسخ",
-
+        "url" => "ادرس",
+        "parent_id" => "منو والد",
     ],
 ];

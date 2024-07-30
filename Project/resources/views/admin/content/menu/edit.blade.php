@@ -32,12 +32,14 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('content.menu.store') }}" method="POST">
+                <form action="{{ route('content.menu.update', $currentMenu->id) }}" method="POST">
                     @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="">نام منو</label>
-                            <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                            <input type="text" name="name" class="form-control"
+                                value="{{old('name', $currentMenu->name)}}">
                             @error('name')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -47,7 +49,7 @@
                             <select name="parent_id" id="inputState" class="form-control">
                                 <option value="" selected>منوی اصلی</option>
                                 @foreach ($menus as $menu)
-                                    <option value="{{ $menu->id }}" @if ($menu->id == old('parent_id')) selected @endif>
+                                    <option value="{{ $menu->id }}" @if ($menu->id == old('parent_id', $currentMenu->parent_id)) selected @endif>
                                         {{$menu->name  }}
                                     </option>
                                 @endforeach
@@ -58,7 +60,8 @@
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">ادرس url</label>
-                            <input type="text" name="url" class="form-control" value="{{old('url')}}">
+                            <input type="text" name="url" class="form-control"
+                                value="{{old('url', $currentMenu->url)}}">
                             @error('url')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -66,8 +69,10 @@
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $currentMenu->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $currentMenu->status) == 1) selected @endif>فعال
+                                </option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
