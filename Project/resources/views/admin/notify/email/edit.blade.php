@@ -31,20 +31,24 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('notify.email.store') }}" method="POST">
+                <form action="{{ route('notify.email.update', $mail->id) }}" method="POST">
                     @csrf
+                    {{ method_field('PUT') }}
                     <div class="row mb-4">
                         <div class="form-group col-12 py-2">
                             <label for="">عنوان ایمیل</label>
-                            <input type="text" name="subject" class="form-control" value="{{ old('subject') }}">
+                            <input type="text" name="subject" class="form-control"
+                                value="{{ old('subject', $mail->subject) }}">
                             @error('subject')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">تاریخ انتشار</label>
-                            <input type="text" name="published_at" id="published_at" class="form-control d-none">
-                            <input type="text" class="form-control" id="published_at_view">
+                            <input type="text" name="published_at" id="published_at" class="form-control d-none"
+                                value="{{ $mail->published_at }}">
+                            <input type="text" class="form-control" id="published_at_view"
+                                value="{{ $mail->published_at }}">
                             @error('published_at')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -52,8 +56,9 @@
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $mail->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $mail->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -62,7 +67,7 @@
                         <div class="form-group py-2 mb-2">
                             <label for="">توضیحات</label>
                             <textarea name="body" class="form-control form-control-sm"
-                                rows="6">{{ old('body') }}</textarea>
+                                rows="6">{{ old('body', $mail->body) }}</textarea>
                             @error('body')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror

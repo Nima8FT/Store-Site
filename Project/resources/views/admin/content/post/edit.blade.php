@@ -31,7 +31,8 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('content.post.update',$post->id) }}" method="POST" enctype="multipart/form-data" id="form">
+                <form action="{{ route('content.post.update', $post->id) }}" method="POST" enctype="multipart/form-data"
+                    id="form">
                     @csrf
                     {{method_field('PUT')}}
                     <div class="row mb-4">
@@ -48,8 +49,8 @@
                             <select id="inputState" class="form-control" name="category_id">
                                 <option selected>دسته را انتخاب کنید</option>
                                 @foreach ($postCategories as $postCategory)
-                                    <option value="{{$postCategory->id}}" @if (old('category_id',$post->category_id) == $postCategory->id)
-                                    selected @endif>{{$postCategory->name}}</option>
+                                    <option value="{{$postCategory->id}}" @if (old('category_id', $post->category_id) == $postCategory->id) selected @endif>{{$postCategory->name}}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -64,27 +65,29 @@
                             @enderror
                             <div class="row mt-3">
                                 @php
-$number =1;
+$number = 1;
                                 @endphp
                                 @foreach ($post->image['indexArray'] as $key => $value)
-                                <div class="col-md-3">
-                                     <div class="form-check">
-                                            <input type="radio" class="form-check" name="currentImage" id="{{$number}}" value="{{ $key }}" @if ($post->image['currentImage'] == $key) checked @endif>
-                                        <label for="{{$number}}" class="form-check-label mx-2">
-                                            <img src="{{ asset($value) }}" alt="" style="max-width:120px">
-                                        </label>
-                                        </div>
-                                </div>
-                                @php
-                                $number++;
-                                @endphp
+                                                                <div class="col-md-3">
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check" name="currentImage" id="{{$number}}"
+                                                                            value="{{ $key }}" @if ($post->image['currentImage'] == $key) checked @endif>
+                                                                        <label for="{{$number}}" class="form-check-label mx-2">
+                                                                            <img src="{{ asset($value) }}" alt="" style="max-width:120px">
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                @php
+    $number++;
+                                                                @endphp
                                 @endforeach
                             </div>
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status',$post->status) == 0) selected @endif>غیر فعال</option>
+                                <option value="0" @if (old('status', $post->status) == 0) selected @endif>غیر فعال
+                                </option>
                                 <option value="1" @if (old('status', $post->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
@@ -94,8 +97,10 @@ $number =1;
                         <div class="form-group col-md-6 py-2">
                             <label for="commentable">امکان درج کامنت</label>
                             <select id="commentable" name="commentable" class="form-control">
-                                <option value="0" @if (old('commentable',$post->commentable) == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('commentable',$post->commentable) == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('commentable', $post->commentable) == 0) selected @endif>غیر
+                                    فعال</option>
+                                <option value="1" @if (old('commentable', $post->commentable) == 1) selected @endif>فعال
+                                </option>
                             </select>
                             @error('commentable')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -103,15 +108,16 @@ $number =1;
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">تاریخ انتشار</label>
-                            <input type="text" name="published_at" id="published_at" class="form-control d-none">
-                            <input type="text" class="form-control" id="published_at_view">
+                            <input type="text" name="published_at" id="published_at" class="form-control d-none" value="{{ $post->published_at }}">
+                            <input type="text" class="form-control" id="published_at_view" value="{{ $post->published_at }}>
                             @error('published_at')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-12 py-2">
                             <label for="tags">تگ ها</label>
-                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags',$post->tags) }}">
+                            <input type="hidden" class="form-control" name="tags" id="tags"
+                                value="{{ old('tags', $post->tags) }}">
                             <select id="select_tags" class="select2 form-control" multiple>
                             </select>
                             @error('tags')
@@ -121,7 +127,7 @@ $number =1;
                         <div class="form-group py-2 mb-2">
                             <label for="">خلاصه پست</label>
                             <textarea name="summary" id="summary" class="form-control form-control-sm"
-                                rows="6">{{old('summary',$post->summary) }}</textarea>
+                                rows="6">{{old('summary', $post->summary) }}</textarea>
                             @error('summary')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -129,7 +135,7 @@ $number =1;
                         <div class="form-group py-2 mb-2">
                             <label for="">توضیحات</label>
                             <textarea name="body" id="body" class="form-control form-control-sm"
-                                rows="6">{{old('body',$post->body) }}</textarea>
+                                rows="6">{{old('body', $post->body) }}</textarea>
                             @error('body')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -156,8 +162,14 @@ $number =1;
 <script>
     $('#published_at_view').persianDatepicker({
         observe: true,
-        format: 'YYYY/MM/DD',
+        format: 'YYYY/MM/DD H:m:s',
         altField: '#published_at',
+        timePicker: {
+            enabled: true,
+            meridiem: {
+                enabled: true,
+            }
+        }
     });
 </script>
 

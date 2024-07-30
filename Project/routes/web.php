@@ -102,7 +102,9 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('notify')->as('notify.')->group(function () {
         Route::resource('email', EmailController::class);
+        Route::get('/email/status/{mail}', [EmailController::class, 'status'])->name('email.status');
         Route::resource('sms', SMSController::class);
+        Route::get('/sms/status/{sms}', [SMSController::class, 'status'])->name('sms.status');
     });
 
     Route::prefix('ticket')->as('ticket.')->group(function () {

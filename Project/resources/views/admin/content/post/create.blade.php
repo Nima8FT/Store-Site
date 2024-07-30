@@ -136,8 +136,14 @@
 <script>
     $('#published_at_view').persianDatepicker({
         observe: true,
-        format: 'YYYY/MM/DD',
+        format: 'YYYY/MM/DD H:m:s',
         altField: '#published_at',
+        timePicker: {
+            enabled: true,
+            meridiem: {
+                enabled: true,
+            }
+        }
     });
 </script>
 

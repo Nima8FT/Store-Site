@@ -2,6 +2,7 @@
 
 @section('head-tag')
 <title>ایجاد اطلاعیه پیامکی</title>
+<link rel="stylesheet" href="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.css') }}">
 @endsection
 
 @section('content')
@@ -30,19 +31,41 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form>
+                <form action="{{ route('notify.sms.store') }}" method="POST">
+                    @csrf
                     <div class="row mb-4">
-                        <div class="form-group col-md-6 py-2">
+                        <div class="form-group col-12 py-2">
                             <label for="">عنوان پیامک</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                            @error('title')
+                                <small class="text-danger" role="alert">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">تاریخ انتشار</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="published_at" id="published_at" class="form-control d-none">
+                            <input type="text" class="form-control" id="published_at_view">
+                            @error('published_at')
+                                <small class="text-danger" role="alert">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6 py-2">
+                            <label for="status">وضعیت</label>
+                            <select id="status" name="status" class="form-control">
+                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
+                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                            </select>
+                            @error('status')
+                                <small class="text-danger" role="alert">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group py-2 mb-2">
                             <label for="">توضیحات</label>
-                            <textarea class="form-control form-control-sm" rows="6"></textarea>
+                            <textarea name="body" class="form-control form-control-sm"
+                                rows="6">{{ old('body') }}</textarea>
+                            @error('body')
+                                <small class="text-danger" role="alert">{{$message}}</small>
+                            @enderror
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary fw-bold">ثبت</button>
@@ -52,4 +75,22 @@
     </section>
 </section>
 
+@endsection
+
+@section('script')
+<script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
+<script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
+<script>
+    $('#published_at_view').persianDatepicker({
+        observe: true,
+        format: 'YYYY/MM/DD H:m:s',
+        altField: '#published_at',
+        timePicker: {
+            enabled: true,
+            meridiem: {
+                enabled: true,
+            }
+        }
+    });
+</script>
 @endsection

@@ -88,7 +88,7 @@
                                     <p class="truncate-text">{{ $post->tags }}</p>
                                 </td>
                                 <td>
-                                    <p class="truncate-text">{{ $post->published_at }}</p>
+                                    <p class="truncate-text">{{  jalaliDate($post->published_at, 'H:i:s | Y/m/d') }}</p>
                                 </td>
                                 <td>{{ $post->user->email }}</td>
                                 <td>{{ $post->postCategory->name }}</td>
