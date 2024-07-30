@@ -79,6 +79,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('category', ContentCategoryController::class);
         Route::get('/category/status/{postCategory}', [ContentCategoryController::class, 'status'])->name('category.status');
         Route::resource('comment', ContentCommentController::class);
+        Route::get('/comment/status/{comment}', [ContentCommentController::class, 'status'])->name('comment.status');
+        Route::get('/comment/approved/{comment}', [ContentCommentController::class, 'approved'])->name('comment.approved');
+        Route::post('/comment/answer/{comment}', [ContentCommentController::class, 'answer'])->name('comment.answer');
         Route::resource('faq', FAQController::class);
         Route::get('/faq/status/{faq}', [FAQController::class, 'status'])->name('faq.status');
         Route::resource('menu', MenuController::class);

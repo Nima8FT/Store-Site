@@ -12,7 +12,7 @@
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">نظرات</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">نمایش نظر ها</li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">نمایش نظر</li>
     </ol>
 </nav>
 
@@ -21,7 +21,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h4 class="fw-bold">
-                    نمایش نظرات
+                    نمایش نظر
                 </h4>
             </section>
 
@@ -34,24 +34,29 @@
             <section class="main-body-container-bottom">
 
                 <div class="card mb-3">
-                    <div class="card-header bg-warning">نیما ملکوتی خواه - 121548745</div>
+                    <div class="card-header bg-warning h5">{{ $comment->user->fullName }} -
+                        {{ $comment->user->id }}
+                    </div>
                     <div class="card-body">
-                        <h5>کد کالا 4547452 گوشی ایفون 13</h5>
-                        <p>به نظر من گوشی خوبی ارزش خرید دارد</p>
+                        <h5>محصول : {{ $comment->commentable->title }} - کد محصول : {{ $comment->commentable->id }}</h5>
+                        <p>{{ $comment->body }}</p>
                     </div>
                 </div>
 
-                <form action="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="" class="mb-2">پاسخ ادمین</label>
-                                <textarea name="" id="" class="form-control form-control-sm" rows="4"></textarea>
+                @if (!$comment->parent)
+                    <form action="{{ route('content.comment.answer', $comment->id) }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="" class="mb-2">پاسخ ادمین</label>
+                                    <textarea name="body" id="" class="form-control form-control-sm" rows="4"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary fw-bold mt-3">ثبت</button>
-                </form>
+                        <button type="submit" class="btn btn-primary fw-bold mt-3">ثبت</button>
+                    </form>
+                @endif
 
             </section>
         </section>
