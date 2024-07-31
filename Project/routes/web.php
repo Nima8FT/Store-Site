@@ -96,7 +96,11 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('user')->as('user.')->group(function () {
         Route::resource('admin-user', AdminUserController::class);
+        Route::get('/admin-user/status/{user}', [AdminUserController::class, 'status'])->name('admin-user.status');
+        Route::get('/admin-user/activation/{user}', [AdminUserController::class, 'activation'])->name('admin-user.activation');
         Route::resource('customer', CustomerController::class);
+        Route::get('/customer/status/{user}', [CustomerController::class, 'status'])->name('customer.status');
+        Route::get('/customer/activation/{user}', [CustomerController::class, 'activation'])->name('customer.activation');
         Route::resource('role', RoleController::class);
         Route::resource('premission', PremissionController::class);
     });

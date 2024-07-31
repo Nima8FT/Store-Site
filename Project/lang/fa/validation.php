@@ -166,5 +166,6 @@ return [
         "keywords" => "کلمات کلیدی",
         "logo" => "لوگو",
         "icon" => "ایکون",
+        'national_code' => 'کد ملی'
     ],
 ];

@@ -82,13 +82,13 @@ class EmailFileController extends Controller
             $fileSize = $fileService->getFileSize();
             $result = $fileService->moveToPublic($request->file('file'));
             $fileFormat = $fileService->getFileFormat();
+            $inputs['file_path'] = $result;
+            $inputs['file_size'] = $fileSize;
+            $inputs['file_type'] = $fileFormat;
         }
         if (!$result) {
             return redirect()->route('notify.email-file.index', $file->public_mail_id)->with('toast-error', 'ایجاد فایل ایمیل با خطا مواجه شد');
         }
-        $inputs['file_path'] = $result;
-        $inputs['file_size'] = $fileSize;
-        $inputs['file_type'] = $fileFormat;
         $result = $file->update($inputs);
         return redirect()->route('notify.email-file.index', $file->public_mail_id)->with('toast-success', 'ویرایش فایل ایمیل با موفقیت انجام شد');
     }
