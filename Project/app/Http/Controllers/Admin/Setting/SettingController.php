@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Setting\SettingRequest;
+use App\Http\Services\Image\ImageService;
+use App\Models\Setting\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -12,7 +15,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view("admin.setting.index");
+        $setting = Setting::first();
+        return view("admin.setting.index", compact('setting'));
     }
 
     /**
@@ -44,15 +48,43 @@ class SettingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $setting = Setting::find($id);
+        return view("admin.setting.edit", compact('setting'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SettingRequest $request, string $id, ImageService $imageService)
     {
-        //
+        $setting = Setting::find($id);
+        $inputs = $request->all();
+        if ($request->has('logo')) {
+            if (!empty($setting->logo)) {
+                $imageService->deleteDirectoryAndFiles($setting->logo);
+            }
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
+            $imageService->setImageName('logo');
+            $result = $imageService->save($request->file('logo'));
+            if ($result == false) {
+                return redirect()->route('setting.index')->with('swal-error', 'اپلود عکس با خطا مواجه شد');
+            }
+            $inputs['logo'] = $result;
+        }
+        if ($request->has('icon')) {
+            if (!empty($setting->icon)) {
+                $imageService->deleteDirectoryAndFiles($setting->icon);
+            }
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
+            $imageService->setImageName('icon');
+            $result = $imageService->save($request->file('icon'));
+            if ($result == false) {
+                return redirect()->route('setting.index')->with('swal-error', 'اپلود عکس با خطا مواجه شد');
+            }
+            $inputs['icon'] = $result;
+        }
+        $setting->update($inputs);
+        return redirect()->route('setting.index')->with('toast-success', 'تنظیمات سایت با موفقیت ویرایش شد');
     }
 
     /**
