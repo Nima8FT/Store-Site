@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin;
+use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
+use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\Notify\SMSController;
@@ -122,6 +124,10 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('ticket')->as('ticket.')->group(function () {
+        Route::resource('category', TicketCategoryController::class);
+        Route::get('/category/status/{ticket}', [TicketCategoryController::class, 'status'])->name('category.status');
+        Route::resource('prioriy', TicketPriorityController::class);
+        Route::get('/prioriy/status/{ticket}', [TicketPriorityController::class, 'status'])->name('prioriy.status');
         Route::get('/', [TicketController::class, 'index'])->name('index');
         Route::get('/show', [TicketController::class, 'show'])->name('show');
         Route::get('/create', [TicketController::class, 'create'])->name('create');
