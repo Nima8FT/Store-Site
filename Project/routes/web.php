@@ -1,35 +1,36 @@
 <?php
 
 use App\Http\Controllers\admin;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\User\RoleController;
+use App\Http\Controllers\Admin\Notify\SMSController;
 use App\Http\Controllers\Admin\Content\FAQController;
 use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\Content\PostController;
-use App\Http\Controllers\Admin\Market\GalleryController;
-use App\Http\Controllers\Admin\Market\ProductController;
-use App\Http\Controllers\Admin\Market\PropertyController;
-use App\Http\Controllers\Admin\Market\StoreController;
-use App\Http\Controllers\Admin\Notify\EmailController;
-use App\Http\Controllers\Admin\Notify\SMSController;
-use App\Http\Controllers\Admin\Setting\SettingController;
-use App\Http\Controllers\Admin\Ticket\TicketController;
-use App\Http\Controllers\Admin\User\AdminUserController;
-use App\Http\Controllers\Admin\User\CustomerController;
-use App\Http\Controllers\Admin\User\PremissionController;
-use App\Http\Controllers\Admin\User\RoleController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Market\BrandController;
 use App\Http\Controllers\Admin\Market\OrderController;
+use App\Http\Controllers\Admin\Market\StoreController;
+use App\Http\Controllers\Admin\Notify\EmailController;
+use App\Http\Controllers\Admin\Ticket\TicketController;
+use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Market\CommentController;
+use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\PaymentController;
+use App\Http\Controllers\Admin\Market\ProductController;
+use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\Market\CategoryController;
-use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
-use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 use App\Http\Controllers\Admin\Market\DeliveryController;
+use App\Http\Controllers\Admin\Market\PropertyController;
+use App\Http\Controllers\Admin\Setting\SettingController;
+use App\Http\Controllers\Admin\User\PremissionController;
+use App\Http\Controllers\Admin\Notify\EmailFileController;
 use App\Http\Controllers\Admin\Market\Discount\CopanController;
 use App\Http\Controllers\Admin\Market\Discount\AmazingSaleController;
 use App\Http\Controllers\Admin\Market\Discount\CommonDiscountController;
+use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
+use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
 
 
 // Admin Route
@@ -105,6 +106,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/email/status/{mail}', [EmailController::class, 'status'])->name('email.status');
         Route::resource('sms', SMSController::class);
         Route::get('/sms/status/{sms}', [SMSController::class, 'status'])->name('sms.status');
+        Route::prefix('email-file')->as('email-file.')->group(function () {
+            Route::get('/{mail}', [EmailFileController::class, 'index'])->name('index');
+            Route::get('/{mail}/create', [EmailFileController::class, 'create'])->name('create');
+            Route::post('/{mail}/store', [EmailFileController::class, 'store'])->name('store');
+            Route::get('/edit/{file}', [EmailFileController::class, 'edit'])->name('edit');
+            Route::put('/update/{file}', [EmailFileController::class, 'update'])->name('update');
+            Route::delete('/destroy/{file}', [EmailFileController::class, 'destroy'])->name('destroy');
+            Route::get('/status/{file}', [EmailFileController::class, 'status'])->name('status');
+        });
     });
 
     Route::prefix('ticket')->as('ticket.')->group(function () {
