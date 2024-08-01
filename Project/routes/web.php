@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin;
+use App\Http\Controllers\Admin\Ticket\TicketAdminController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use Illuminate\Support\Facades\Route;
@@ -129,15 +130,16 @@ Route::prefix('admin')->group(function () {
         Route::resource('prioriy', TicketPriorityController::class);
         Route::get('/prioriy/status/{ticket}', [TicketPriorityController::class, 'status'])->name('prioriy.status');
         Route::get('/', [TicketController::class, 'index'])->name('index');
-        Route::get('/show', [TicketController::class, 'show'])->name('show');
-        Route::get('/create', [TicketController::class, 'create'])->name('create');
-        Route::post('/store', [TicketController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [TicketController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [TicketController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [TicketController::class, 'destroy'])->name('destroy');
         Route::get('/new-tickets', [TicketController::class, 'newTickets'])->name('newTickets');
         Route::get('/open-tickets', [TicketController::class, 'openTickets'])->name('openTickets');
         Route::get('/close-tickets', [TicketController::class, 'closeTickets'])->name('closeTickets');
+        Route::get('/show/{ticket}', [TicketController::class, 'show'])->name('show');
+        Route::get('/change/{ticket}', [TicketController::class, 'change'])->name('change');
+        Route::post('/answer/{ticket}', [TicketController::class, 'answer'])->name('answer');
+        Route::prefix('admin')->as('admin.')->group(function () {
+            Route::get('/', [TicketAdminController::class, 'index'])->name('index');
+            Route::get('/set/{user}', [TicketAdminController::class, 'set'])->name('set');
+        });
     });
 
     Route::resource('setting', SettingController::class);

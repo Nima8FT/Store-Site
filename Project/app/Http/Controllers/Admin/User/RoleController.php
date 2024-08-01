@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -12,7 +13,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view("admin.user.role.index");
+        $roles = Role::orderBy('created_at', 'desc')->simplePaginate(15);
+        return view("admin.user.role.index", compact("roles"));
     }
 
     /**

@@ -33,24 +33,31 @@
             <section class="main-body-container-bottom">
 
                 <div class="card mb-3">
-                    <div class="card-header bg-warning">نیما ملکوتی خواه - 121548745</div>
+                    <div class="card-header bg-warning h5">{{ $ticket->user->fullName }} - {{ $ticket->id }}</div>
                     <div class="card-body">
-                        <h5>کد کالا 4547452 گوشی ایفون 13</h5>
-                        <p>به نظر من گوشی خوبی ارزش خرید دارد</p>
+                        <h5>{{ $ticket->subject }}</h5>
+                        <p>{{ $ticket->description }}</p>
                     </div>
                 </div>
 
-                <form action="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="" class="mb-2">پاسخ تیکت</label>
-                                <textarea name="" id="" class="form-control form-control-sm" rows="4"></textarea>
+                @if (!$ticket->ticket_id)
+                    <form action="{{ route('ticket.answer', $ticket->id) }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="" class="mb-2">پاسخ تیکت</label>
+                                    <textarea name="description" id="" class="form-control form-control-sm"
+                                        rows="4">{{ old('description') }}</textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary fw-bold mt-3">ثبت</button>
-                </form>
+                        @error('description')
+                            <small class="text-danger" role="alert">{{$message}}</small>
+                        @enderror
+                        <button type="submit" class="btn btn-primary fw-bold mt-3">ثبت</button>
+                    </form>
+                @endif
 
             </section>
         </section>

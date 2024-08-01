@@ -35,12 +35,14 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">نویسنده تیکت</th>
                             <th scope="col">عنوان تیکت</th>
-                            <th scope="col">دسته تیکت</th>
-                            <th scope="col">اولویت تیکت</th>
-                            <th scope="col">ارجاع شده از</th>
+                            <th scope="col">متن تیکت</th>
+                            <th scope="col">مشاهده</th>
+                            <th scope="col">نویسنده تیکت</th>
+                            <th scope="col">ارجاع شده</th>
+                            <th scope="col">دسته بندی</th>
+                            <th scope="col">اولویت</th>
+                            <th scope="col">تیکت مرجع</th>
                             <th scope="col" class="width-16 text-right">
                                 <i class="fa fa-cogs mx-2"></i>
                                 تنظیمات
@@ -48,48 +50,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>پرداخت انجام نمیشود</td>
-                            <td>دسته فروش</td>
-                            <td>فوری</td>
-                            <td>.</td>
-                            <td class="width-16 text-left">
-                                <a href="{{ route('ticket.create') }}" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-eye p-1"></i>
-                                    مشاهده
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>پرداخت انجام نمیشود</td>
-                            <td>دسته فروش</td>
-                            <td>فوری</td>
-                            <td>.</td>
-                            <td class="width-16 text-left">
-                                <a href="{{ route('ticket.create') }}" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-eye p-1"></i>
-                                    مشاهده
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>پرداخت انجام نمیشود</td>
-                            <td>دسته فروش</td>
-                            <td>فوری</td>
-                            <td>.</td>
-                            <td class="width-16 text-left">
-                                <a href="{{ route('ticket.create') }}" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-eye p-1"></i>
-                                    مشاهده
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($tickets as $ticket)  
+                            <tr>
+                                <td>
+                                    <p class="truncate-text">{{ $ticket->subject }}</p>
+                                </td>
+                                <td>
+                                    <p class="truncate-text">{{ $ticket->description }}</p>
+                                </td>
+                                <td class="{{ $ticket->seen ? '' : 'text-danger' }}">
+                                    {{ $ticket->seen ? 'دیده شده' : 'دیده نشده' }}
+                                </td>
+                                <td>{{ $ticket->user->fullName }}</td>
+                                <td>{{ $ticket->adminTicket->user->fullName }}</td>
+                                <td>{{ $ticket->category->name }}</td>
+                                <td>{{ $ticket->priority->name }}</td>
+                                <td>{{ $ticket->ticket_id ? substr($ticket->parent->subject, 0, 10) : '-' }}</td>
+                                <td class="width-16 text-left">
+                                    <a href="{{ route('ticket.show', $ticket->id) }}"
+                                        class="btn btn-primary btn-sm fw-bold">
+                                        <i class="fa fa-eye p-1"></i>
+                                        مشاهده
+                                    </a>
+                                    <a href="{{ route('ticket.change', $ticket->id) }}"
+                                        class="btn {{$ticket->status ? 'btn-danger' : 'btn-success'}} btn-sm fw-bold">
+                                        <i class="fa {{$ticket->status ? 'fa-trash-alt' : 'fa-check'}} p-1"></i>
+                                        {{$ticket->status ? 'بستن تیکت' : 'باز کردن تیکت'}}
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>

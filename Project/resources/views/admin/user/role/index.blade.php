@@ -35,7 +35,6 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">نام نقش</th>
                             <th scope="col">دسترسی ها</th>
                             <th scope="col" class="text-right">
@@ -45,75 +44,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>پشتیبان فروش</td>
-                            <td>
-                                مشاهده سفارشات <br>
-                                مشاهده پرداخت ها <br>
-                                مشاهده تخفیف ها <br>
-                            </td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-success btn-sm fw-bold">
-                                    <i class="fa fa-user-graduate p-1"></i>
-                                    دسترسی ها
-                                </a>
-                                <a href="#" class="btn btn-primary mx-3 btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>پشتیبان فروش</td>
-                            <td>
-                                مشاهده سفارشات <br>
-                                مشاهده پرداخت ها <br>
-                                مشاهده تخفیف ها <br>
-                            </td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-success btn-sm fw-bold">
-                                    <i class="fa fa-user-graduate p-1"></i>
-                                    دسترسی ها
-                                </a>
-                                <a href="#" class="btn btn-primary mx-3 btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>پشتیبان فروش</td>
-                            <td>
-                                مشاهده سفارشات <br>
-                                مشاهده پرداخت ها <br>
-                                مشاهده تخفیف ها <br>
-                            </td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-success btn-sm fw-bold">
-                                    <i class="fa fa-user-graduate p-1"></i>
-                                    دسترسی ها
-                                </a>
-                                <a href="#" class="btn btn-primary mx-3 btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    ویرایش
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm fw-bold">
-                                    <i class="fa fa-trash-alt p-1"></i>
-                                    حذف
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($roles as $role)                        
+                            <tr>
+                                <td>{{ $role->name }}</td>
+                                <td>
+                                    مشاهده سفارشات <br>
+                                    مشاهده پرداخت ها <br>
+                                    مشاهده تخفیف ها <br>
+                                </td>
+                                <td class="text-left">
+                                    <a href="#" class="btn btn-success btn-sm fw-bold">
+                                        <i class="fa fa-user-graduate p-1"></i>
+                                        دسترسی ها
+                                    </a>
+                                    <a href="#" class="btn btn-primary mx-3 btn-sm fw-bold">
+                                        <i class="fa fa-edit p-1"></i>
+                                        ویرایش
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm fw-bold">
+                                        <i class="fa fa-trash-alt p-1"></i>
+                                        حذف
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
