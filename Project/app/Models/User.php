@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use User\Role;
 use App\Models\Ticket\Ticket;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Ticket\TicketAdmin;
@@ -85,5 +86,9 @@ class User extends Authenticatable
     public function ticket()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function role() {
+        return $this->belongsToMany(Role::class);
     }
 }

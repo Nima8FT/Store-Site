@@ -105,6 +105,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/customer/status/{user}', [CustomerController::class, 'status'])->name('customer.status');
         Route::get('/customer/activation/{user}', [CustomerController::class, 'activation'])->name('customer.activation');
         Route::resource('role', RoleController::class);
+        Route::get('/permission-form/{role}', [RoleController::class, 'permissionForm'])->name('role.permission-form');
+        Route::put('/permission-update/{role}', [RoleController::class, 'permissionUpdate'])->name('role.permission-update');
         Route::resource('premission', PremissionController::class);
     });
 

@@ -32,41 +32,27 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('user.role.store') }}" method="POST">
+                <form action="{{ route('user.role.update', $role->id) }}" method="POST">
                     @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4 d-flex justify-content-around align-items-center">
                         <div class="form-group col-md-5">
                             <label for="">عنوان نقش</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                            <input type="text" name="name" value="{{ old('name', $role->name) }}" class="form-control">
                             @error('name')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-5">
                             <label for="">توضیح نقش</label>
-                            <input type="text" name="description" value="{{ old('description') }}" class="form-control">
+                            <input type="text" name="description" value="{{ old('description', $role->description) }}"
+                                class="form-control">
                             @error('description')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary fw-bold col-md-2 mt-4"
                             style="height: 35px;width:10%">ثبت</button>
-                    </div>
-
-                    <div class="col-12 row border-top py-2">
-                        @foreach ($permissions as $key => $permission)                        
-                            <div class="col-md-3">
-                                <div class="form-check d-flex align-items-center mt-2">
-                                    <input type="checkbox" class="form-check-input mx-1" name="permissions[]"
-                                        id="{{$permission->id}}" value="{{$permission->id}}" checked>
-                                    <label for="{{$permission->id}}"
-                                        class="form-check-label mx-2 mt-2">{{ $permission->name }}</label>
-                                </div>
-                                @error('permissions.' . $key)
-                                    <small class="text-danger" role="alert">{{$message}}</small>
-                                @enderror
-                            </div>
-                        @endforeach
                     </div>
                 </form>
             </section>

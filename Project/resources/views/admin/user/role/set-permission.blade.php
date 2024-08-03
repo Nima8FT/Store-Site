@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>ایجاد نقش</title>
+<title>دسترسی نقش</title>
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">بخش کاربران</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">نقش ها</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ایجاد نقش</li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">دسترسی نقش</li>
     </ol>
 </nav>
 
@@ -21,7 +21,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h4 class="fw-bold">
-                    ایجاد نقش جدید
+                    ویرایش دسترسی نقش
                 </h4>
             </section>
 
@@ -32,33 +32,29 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('user.role.store') }}" method="POST">
+                <form action="{{ route('user.role.permission-update', $role->id) }}" method="POST">
                     @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4 d-flex justify-content-around align-items-center">
-                        <div class="form-group col-md-5">
-                            <label for="">عنوان نقش</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
-                            @error('name')
-                                <small class="text-danger" role="alert">{{$message}}</small>
-                            @enderror
+                        <div class="form-group col-md-5 d-flex">
+                            <label for="" class="mx-5">عنوان نقش</label>
+                            <p class="h6">{{ $role->name }}</p>
                         </div>
-                        <div class="form-group col-md-5">
-                            <label for="">توضیح نقش</label>
-                            <input type="text" name="description" value="{{ old('description') }}" class="form-control">
-                            @error('description')
-                                <small class="text-danger" role="alert">{{$message}}</small>
-                            @enderror
+                        <div class="form-group col-md-5 d-flex">
+                            <label for="" class="mx-5">توضیح نقش</label>
+                            <p class="h6">{{ $role->description }}</p>
                         </div>
-                        <button type="submit" class="btn btn-primary fw-bold col-md-2 mt-4"
-                            style="height: 35px;width:10%">ثبت</button>
                     </div>
 
                     <div class="col-12 row border-top py-2">
+                        @php
+                            $rolePermissionArray = $role->permissions->pluck('id')->toArray();
+                        @endphp
                         @foreach ($permissions as $key => $permission)                        
                             <div class="col-md-3">
                                 <div class="form-check d-flex align-items-center mt-2">
                                     <input type="checkbox" class="form-check-input mx-1" name="permissions[]"
-                                        id="{{$permission->id}}" value="{{$permission->id}}" checked>
+                                        id="{{$permission->id}}" value="{{$permission->id}}" @if (in_array($permission->id, $rolePermissionArray)) checked @endif>
                                     <label for="{{$permission->id}}"
                                         class="form-check-label mx-2 mt-2">{{ $permission->name }}</label>
                                 </div>
@@ -68,6 +64,9 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <button type="submit" class="btn btn-primary fw-bold col-md-2 mt-4"
+                        style="height: 35px;width:10%">ثبت</button>
                 </form>
             </section>
         </section>

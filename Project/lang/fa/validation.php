@@ -137,7 +137,7 @@ return [
         "title" => "عنوان",
         "text" => "متن",
         "content" => "محتوا",
-        "description" => "توضیحات کالا",
+        "description" => "توضیحات",
         "excerpt" => "گلچین کردن",
         "date" => "تاریخ",
         "time" => "زمان",
@@ -166,6 +166,7 @@ return [
         "keywords" => "کلمات کلیدی",
         "logo" => "لوگو",
         "icon" => "ایکون",
-        'national_code' => 'کد ملی'
+        'national_code' => 'کد ملی',
+        'permissions.*' => 'سطح دسترسی',
     ],
 ];
