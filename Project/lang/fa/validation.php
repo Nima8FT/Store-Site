@@ -171,5 +171,7 @@ return [
         'amount' => 'هزینه',
         'delivery_time' => 'زمان ارسال',
         'delivery_time_unit' => 'واحد زمان ارسال',
+        'persian_name' => 'نام فارسی',
+        'original_name' => 'نام اصلی',
     ],
 ];

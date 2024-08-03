@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/category/status/{category}', [CategoryController::class, 'status'])->name('category.status');
         Route::get('/category/showmenu/{category}', [CategoryController::class, 'showMenu'])->name('category.showmenu');
         Route::resource('brand', BrandController::class);
+        Route::get('/brand/status/{brand}', [BrandController::class, 'status'])->name('brand.status');
         Route::resource('comment', CommentController::class);
         Route::resource('delivery', DeliveryController::class);
         Route::get('/delivery/status/{delivery}', [DeliveryController::class, 'status'])->name('delivery.status');

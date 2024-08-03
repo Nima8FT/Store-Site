@@ -12,7 +12,7 @@
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">بخش فروش</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">برند</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ایجاد برند</li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ویرایش برند</li>
     </ol>
 </nav>
 
@@ -21,7 +21,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h4 class="fw-bold">
-                    ایجاد برند
+                    ویرایش برند
                 </h4>
             </section>
 
@@ -32,20 +32,23 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('market.brand.store') }}" method="POST" enctype="multipart/form-data" id="form">
+                <form action="{{ route('market.brand.update', $brand->id) }}" method="POST"
+                    enctype="multipart/form-data" id="form">
                     @csrf
+                    @method('PUT')
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="">نام فارسی برند</label>
-                            <input type="text" name="persian_name" value="{{old('persian_name')}}" class="form-control">
+                            <input type="text" name="persian_name" value="{{old('persian_name', $brand->persian_name)}}"
+                                class="form-control">
                             @error('persian_name')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">نام اصلی برند</label>
-                            <input type="text" name="original_name" value="{{old('original_name')}}"
-                                class="form-control">
+                            <input type="text" name="original_name"
+                                value="{{old('original_name', $brand->original_name)}}" class="form-control">
                             @error('original_name')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -53,8 +56,9 @@
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $brand->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $brand->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -62,7 +66,8 @@
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="tags">تگ ها</label>
-                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags') }}">
+                            <input type="hidden" class="form-control" name="tags" id="tags"
+                                value="{{ old('tags', $brand->tags) }}">
                             <select id="select_tags" class="select2 form-control" multiple>
                             </select>
                             @error('tags')
@@ -75,6 +80,9 @@
                             @error('logo')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
+                            <div class="mt-3">
+                                <img src="{{ asset($brand->logo) }}" width="50" height="50" alt="">
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary fw-bold">ثبت</button>
