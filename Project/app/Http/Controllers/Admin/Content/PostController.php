@@ -149,6 +149,5 @@ class PostController extends Controller
         } else {
             response()->json(['commentable' => false]);
         }
-        dd($post->commentable);
     }
 }

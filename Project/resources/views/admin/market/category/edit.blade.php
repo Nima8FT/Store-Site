@@ -12,7 +12,7 @@
         <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">بخش فروش</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#">دسته بندی</a></li>
-        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ایجاد دسته بندی</li>
+        <li class="breadcrumb-item  font-size-12 active" aria-current="page">ویرایش دسته بندی</li>
     </ol>
 </nav>
 
@@ -21,7 +21,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h4 class="fw-bold">
-                    ایجاد دسته بندی
+                    ویرایش دسته بندی
                 </h4>
             </section>
 
@@ -32,29 +32,30 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('market.category.store') }}" method="post" enctype="multipart/form-data"
+                <form action="{{ route('market.category.update',$productCategory->id) }}" method="post" enctype="multipart/form-data"
                     id="form">
                     @csrf
+                    {{ method_field('PUT') }}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="">نام دسته</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                            <input type="text" name="name" value="{{ old('name',$productCategory->name) }}" class="form-control">
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="inputState">دسته والد</label>
                             <select name="parent_id" id="inputState" class="form-control">
                                 <option value="">منوی اصلی</option>
-                                @foreach ($productCategories as $productCategory)
-                                    <option value="{{ $productCategory->id }}" @if (old('parent_id') == $productCategory->id)
-                                    selected @endif>{{ $productCategory->name }}</option>
+                                @foreach ($productCategoriesParrent as $productCategoryParrent)
+                                    <option value="{{ $productCategoryParrent->id }}" @if (old('parent_id') == $productCategory->id)
+                                    selected @endif>{{ $productCategoryParrent->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status',$productCategory->status) == 0) selected @endif>غیر فعال</option>
+                                <option value="1" @if (old('status',$productCategory->status) == 1) selected @endif>فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -63,8 +64,8 @@
                         <div class="form-group col-md-6 py-2">
                             <label for="show_in_menu">قابل نمایش بودن</label>
                             <select id="show_in_menu" name="show_in_menu" class="form-control">
-                                <option value="0" @if (old('show_in_menu') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('show_in_menu') == 0) selected @endif>فعال</option>
+                                <option value="0" @if (old('show_in_menu',$productCategory->show_in_menu) == 0) selected @endif>غیر فعال</option>
+                                <option value="1" @if (old('show_in_menu',$productCategory->show_in_menu) == 0) selected @endif>فعال</option>
                             </select>
                             @error('show_in_menu')
                                 <small class="text-danger" role="alert">{{$message}}</small>
@@ -72,7 +73,7 @@
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="tags">تگ ها</label>
-                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags') }}">
+                            <input type="hidden" class="form-control" name="tags" id="tags" value="{{ old('tags',$productCategory->tags) }}">
                             <select id="select_tags" class="select2 form-control" multiple>
                             </select>
                             @error('tags')
@@ -85,11 +86,30 @@
                             @error('image')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
+                                                        <div class="row mt-3">
+                                @php
+$number = 1;
+                                @endphp
+                                @foreach ($productCategory->image['indexArray'] as $key => $value)
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-check">
+                                                                                                        <input type="radio" class="form-check" name="currentImage" id="{{$number}}"
+                                                                                                            value="{{ $key }}" @if ($productCategory->image['currentImage'] == $key) checked @endif>
+                                                                                                        <label for="{{$number}}" class="form-check-label mx-2">
+                                                                                                            <img src="{{ asset($value) }}" alt="" style="max-width:120px">
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                @php
+                                    $number++;
+                                                                                                @endphp
+                                @endforeach
+                            </div>
                         </div>
                         <div class="form-group py-2 mb-2">
                             <label for="">توضیحات</label>
                             <textarea name="description" id="description" class="form-control form-control-sm"
-                                rows="6">{{old('description') }}</textarea>
+                                rows="6">{{old('description',$productCategory->description) }}</textarea>
                             @error('description')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror

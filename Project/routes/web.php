@@ -43,6 +43,8 @@ Route::prefix('admin')->group(function () {
     //Market
     Route::prefix('market')->as('market.')->group(function () {
         Route::resource('category', CategoryController::class);
+        Route::get('/category/status/{category}', [CategoryController::class, 'status'])->name('category.status');
+        Route::get('/category/showmenu/{category}', [CategoryController::class, 'showMenu'])->name('category.showmenu');
         Route::resource('brand', BrandController::class);
         Route::resource('comment', CommentController::class);
         Route::resource('delivery', DeliveryController::class);
