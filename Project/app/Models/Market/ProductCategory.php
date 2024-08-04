@@ -28,4 +28,8 @@ class ProductCategory extends Model
     {
         return $this->hasMany($this, 'parent_id')->with('children');
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

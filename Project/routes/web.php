@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin;
+use App\Http\Controllers\Admin\Market\ProductColorController;
 use App\Http\Controllers\Admin\Ticket\TicketAdminController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
@@ -75,7 +76,27 @@ Route::prefix('admin')->group(function () {
             Route::get('/confirm', [PaymentController::class, 'confirm'])->name('admin.market.payment.confirm');
         });
         Route::resource('/product', ProductController::class);
-        Route::resource('/gallery', GalleryController::class);
+        Route::get('/product/status/{product}', [ProductController::class, 'status'])->name('product.status');
+        Route::get('/product/marketable/{product}', [ProductController::class, 'marketable'])->name('product.marketable');
+        Route::prefix('color')->as('color.')->group(function () {
+            Route::get('/{product}', [ProductColorController::class, 'index'])->name('index');
+            Route::get('/create/{product}', [ProductColorController::class, 'create'])->name('create');
+            Route::post('/store/{product}', [ProductColorController::class, 'store'])->name('store');
+            Route::get('/edit/{product}{color}', [ProductColorController::class, 'edit'])->name('edit');
+            Route::put('/update/{product}{color}', [ProductColorController::class, 'update'])->name('update');
+            Route::delete('/destroy/{product}{color}', [ProductColorController::class, 'destroy'])->name('destroy');
+            Route::get('/status/{product}', [ProductColorController::class, 'status'])->name('status');
+        });
+        Route::prefix('gallery')->as('gallery.')->group(function () {
+            Route::get('/{product}', [GalleryController::class, 'index'])->name('index');
+            Route::get('/create/{product}', [GalleryController::class, 'create'])->name('create');
+            Route::post('/store/{product}', [GalleryController::class, 'store'])->name('store');
+            Route::get('/edit/{product}{gallery}', [GalleryController::class, 'edit'])->name('edit');
+            Route::put('/update/{product}{gallery}', [GalleryController::class, 'update'])->name('update');
+            Route::delete('/destroy/{product}{gallery}', [GalleryController::class, 'destroy'])->name('destroy');
+            Route::get('/status/{product}', [GalleryController::class, 'status'])->name('status');
+        });
+        // Route::resource('/gallery', GalleryController::class);
         Route::resource('/property', PropertyController::class);
 
         //store
