@@ -51,43 +51,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($comments as $comment)                        
-                            <tr>
-                                <td><p class="truncate-text">{{ $comment->body }}</p></td>
-                                <td>
-                                    <p class="truncate-text">{{ $comment->parent ? $comment->parent->body : 'پاسخی ندارد' }}</p>
-                                </td>
-                                <td>{{ $comment->author_id }}</td>
-                                <td>{{ $comment->user->fullName }}</td>
-                                <td>{{ $comment->commentable_id }}</td>
-                                <td>{{ $comment->commentable->title }}</td>
-                                <td @if (!$comment->approved) class="text-danger" @endif>{{ $comment->approved ? 'تایید شده' : 'تایید نشده'}}</td>
-                                <td @if (!$comment->seen) class="text-danger" @endif>{{ $comment->seen ? 'دیده شده' : 'دیده نشده'}}</td>
-                                <td>
-                                    <label for="">
-                                        <input type="checkbox" id="{{ $comment->id }}" onchange="ChangeStatus({{ $comment->id }})"
-                                            data-url="{{ route('content.comment.status', $comment->id) }}" @if ($comment->status === 1)
-                                            checked @endif>
-                                    </label>
-                                </td>
-                                <td class="width-16 text-left">
-                                    <a href="{{ route('content.comment.show', $comment->id) }}" class="btn btn-primary btn-sm fw-bold">
-                                        <i class="fa fa-eye p-1"></i>
-                                        نمایش
-                                    </a>
-                                    @if ($comment->approved)                                     
-                                        <a href="{{ route('content.comment.approved', $comment->id) }}"  class="btn btn-warning btn-sm mx-3 fw-bold">
-                                            <i class="fa fa-clock p-1"></i>
-                                            عدم تایید
+                        @foreach ($comments as $comment)      
+                                <tr>
+                                    <td><p class="truncate-text">{{ $comment->body }}</p></td>
+                                    <td>
+                                        <p class="truncate-text">{{ $comment->parent ? $comment->parent->body : 'پاسخی ندارد' }}</p>
+                                    </td>
+                                    <td>{{ $comment->author_id }}</td>
+                                    <td>{{ $comment->user->fullName }}</td>
+                                    <td>{{ $comment->commentable_id }}</td>
+                                    <td>{{ $comment->commentable->title }}</td>
+                                    <td @if (!$comment->approved) class="text-danger" @endif>{{ $comment->approved ? 'تایید شده' : 'تایید نشده'}}</td>
+                                    <td @if (!$comment->seen) class="text-danger" @endif>{{ $comment->seen ? 'دیده شده' : 'دیده نشده'}}</td>
+                                    <td>
+                                        <label for="">
+                                            <input type="checkbox" id="{{ $comment->id }}" onchange="ChangeStatus({{ $comment->id }})"
+                                                data-url="{{ route('content.comment.status', $comment->id) }}" @if ($comment->status === 1)
+                                                checked @endif>
+                                        </label>
+                                    </td>
+                                    <td class="width-16 text-left">
+                                        <a href="{{ route('content.comment.show', $comment->id) }}" class="btn btn-primary btn-sm fw-bold">
+                                            <i class="fa fa-eye p-1"></i>
+                                            نمایش
                                         </a>
-                                    @else  
-                                        <a href="{{ route('content.comment.approved', $comment->id) }}"  class="btn btn-success btn-sm mx-3 fw-bold">
-                                            <i class="fa fa-check p-1"></i>
-                                            تایید
-                                        </a>
-                                    @endif
-                                </td>
-                            </tr>
+                                        @if ($comment->approved)                                     
+                                            <a href="{{ route('content.comment.approved', $comment->id) }}"  class="btn btn-warning btn-sm mx-3 fw-bold">
+                                                <i class="fa fa-clock p-1"></i>
+                                                عدم تایید
+                                            </a>
+                                        @else  
+                                            <a href="{{ route('content.comment.approved', $comment->id) }}"  class="btn btn-success btn-sm mx-3 fw-bold">
+                                                <i class="fa fa-check p-1"></i>
+                                                تایید
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
                         @endforeach
                     </tbody>
                 </table>

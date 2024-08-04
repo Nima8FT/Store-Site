@@ -3,6 +3,7 @@
 namespace App\Models\Market;
 
 use App\Models\Market\Brand;
+use App\Models\Content\Comment;
 use App\Models\Market\ProductImage;
 use App\Models\Market\CategoryValue;
 use Illuminate\Database\Eloquent\Model;
@@ -49,5 +50,10 @@ class Product extends Model
     public function values()
     {
         return $this->hasMany(CategoryValue::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

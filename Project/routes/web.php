@@ -50,6 +50,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('brand', BrandController::class);
         Route::get('/brand/status/{brand}', [BrandController::class, 'status'])->name('brand.status');
         Route::resource('comment', CommentController::class);
+        Route::get('/comment/status/{comment}', [CommentController::class, 'status'])->name('comment.status');
+        Route::get('/comment/approved/{comment}', [CommentController::class, 'approved'])->name('comment.approved');
+        Route::post('/comment/answer/{comment}', [CommentController::class, 'answer'])->name('comment.answer');
         Route::resource('delivery', DeliveryController::class);
         Route::get('/delivery/status/{delivery}', [DeliveryController::class, 'status'])->name('delivery.status');
         Route::prefix('discount')->group(function () {
