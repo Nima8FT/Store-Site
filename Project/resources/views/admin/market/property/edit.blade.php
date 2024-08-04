@@ -32,18 +32,22 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('market.property.store') }}" method="POST">
+                <form action="{{ route('market.property.update', $categoryAttribute) }}" method="POST">
+                    @csrf
+                    {{method_field('PUT')}}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="">نام فرم</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                            <input type="text" name="name" value="{{ old('name', $categoryAttribute->name) }}"
+                                class="form-control">
                             @error('name')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">واحد اندازه گیری</label>
-                            <input type="text" name="unit" value="{{ old('unit') }}" class="form-control">
+                            <input type="text" name="unit" value="{{ old('unit', $categoryAttribute->unit) }}"
+                                class="form-control">
                             @error('unit')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -53,7 +57,7 @@
                             <select name="category_id" id="inputState" class="form-control">
                                 <option value="">دسته را انتخاب کنید</option>
                                 @foreach ($productCategories as $productCategory)
-                                    <option value="{{ $productCategory->id }}" @if (old('category_id') == $productCategory->id) selected @endif>
+                                    <option value="{{ $productCategory->id }}" @if (old('category_id', $productCategory->id) == $categoryAttribute->category_id) selected @endif>
                                         {{ $productCategory->name }}
                                     </option>
                                 @endforeach

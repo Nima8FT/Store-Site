@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\Market;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Market\PropertyRequest;
+use App\Models\Market\CategoryAttribute;
+use App\Models\Market\ProductCategory;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -12,7 +15,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        return view("admin.market.property.index");
+        $categoryAttributes = CategoryAttribute::orderBy("created_at", "desc")->simplePaginate(15);
+        return view("admin.market.property.index", compact('categoryAttributes'));
     }
 
     /**
@@ -20,15 +24,18 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view("admin.market.property.create");
+        $productCategories = ProductCategory::orderBy('created_at', 'desc')->simplePaginate(15);
+        return view("admin.market.property.create", compact("productCategories"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PropertyRequest $request)
     {
-        //
+        $inputs = $request->all();
+        $categoryAttribute = CategoryAttribute::create($inputs);
+        return redirect()->route("market.property.index")->with("toast-success", "فرم کالا با موفقیت ایجاد شد");
     }
 
     /**
@@ -44,15 +51,20 @@ class PropertyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categoryAttribute = CategoryAttribute::findOrFail($id);
+        $productCategories = ProductCategory::orderBy('created_at', 'desc')->simplePaginate(15);
+        return view("admin.market.property.edit", compact("productCategories", "categoryAttribute"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PropertyRequest $request, string $id)
     {
-        //
+        $inputs = $request->all();
+        $categoryAttribute = CategoryAttribute::findOrFail($id);
+        $categoryAttribute->update($inputs);
+        return redirect()->route("market.property.index")->with("toast-success", "فرم کالا با موفقیت ویرایش شد");
     }
 
     /**
@@ -60,6 +72,8 @@ class PropertyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categoryAttribute = CategoryAttribute::findOrFail($id);
+        $categoryAttribute->delete();
+        return redirect()->route("market.property.index")->with("toast-success", "فرم کالا با موفقیت حذف شد");
     }
 }

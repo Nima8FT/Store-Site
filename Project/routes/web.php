@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin;
 use App\Http\Controllers\Admin\Market\ProductColorController;
+use App\Http\Controllers\Admin\Market\PropertyCategoryValueController;
 use App\Http\Controllers\Admin\Ticket\TicketAdminController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
@@ -96,8 +97,15 @@ Route::prefix('admin')->group(function () {
             Route::delete('/destroy/{product}{gallery}', [GalleryController::class, 'destroy'])->name('destroy');
             Route::get('/status/{product}', [GalleryController::class, 'status'])->name('status');
         });
-        // Route::resource('/gallery', GalleryController::class);
         Route::resource('/property', PropertyController::class);
+        Route::prefix('value')->as('value.')->group(function () {
+            Route::get('/{categoryAttribute}', [PropertyCategoryValueController::class, 'index'])->name('index');
+            Route::get('/create/{categoryAttribute}', [PropertyCategoryValueController::class, 'create'])->name('create');
+            Route::post('/store/{categoryAttribute}', [PropertyCategoryValueController::class, 'store'])->name('store');
+            Route::get('/edit/{categoryAttribute}{value}', [PropertyCategoryValueController::class, 'edit'])->name('edit');
+            Route::put('/update/{categoryAttribute}{value}', [PropertyCategoryValueController::class, 'update'])->name('update');
+            Route::delete('/destroy/{categoryAttribute}{value}', [PropertyCategoryValueController::class, 'destroy'])->name('destroy');
+        });
 
         //store
         Route::resource('/store', StoreController::class);

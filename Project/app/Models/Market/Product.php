@@ -4,6 +4,7 @@ namespace App\Models\Market;
 
 use App\Models\Market\Brand;
 use App\Models\Market\ProductImage;
+use App\Models\Market\CategoryValue;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -43,5 +44,10 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function values()
+    {
+        return $this->hasMany(CategoryValue::class);
     }
 }
