@@ -30,37 +30,32 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('market.store.add-store', $product->id) }}" method="POST">
+                <form action="{{ route('market.store.update', $product->id) }}" method="POST">
                     @csrf
                     {{method_field('put')}}
                     <div class="row mb-4">
-                        <div class="form-group col-md-6 py-2">
-                            <label for="">نام تحویل گیرنده</label>
-                            <input type="text" name="receiver" value="{{ old('receiver') }}" class="form-control">
-                            @error('receiver')
-                                <small class="text-danger" role="alert">{{$message}}</small>
-                            @enderror
-                        </div>
-                        <div class="form-group col-md-6 py-2">
-                            <label for="">نام تحویل دهنده</label>
-                            <input type="text" name="deliver" value="{{ old('deliver') }}" class="form-control">
-                            @error('deliver')
-                                <small class="text-danger" role="alert">{{$message}}</small>
-                            @enderror
-                        </div>
-                        <div class="form-group col-md-6 py-2">
-                            <label for="">تعداد</label>
-                            <input type="text" name="marketable_number" value="{{ old('marketable_number') }}"
+                        <div class="form-group col-12 py-2">
+                            <label for="">تعداد قابل فروش</label>
+                            <input type="text" name="marketable_number"
+                                value="{{ old('marketable_number', $product->marketable_number) }}"
                                 class="form-control">
                             @error('marketable_number')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
-                        <div class="form-group mt-2">
-                            <label for="" class="mb-2">توضیحات</label>
-                            <textarea name="description" id="" class="form-control form-control-sm"
-                                rows="4">{{ old('description') }}</textarea>
-                            @error('description')
+                        <div class="form-group col-12 py-2">
+                            <label for="">تعداد رزرو شده</label>
+                            <input type="text" name="frozen_number"
+                                value="{{ old('frozen_number', $product->frozen_number) }}" class="form-control">
+                            @error('frozen_number')
+                                <small class="text-danger" role="alert">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-12 py-2">
+                            <label for="">تعداد فروخته شده</label>
+                            <input type="text" name="sold_number"
+                                value="{{ old('sold_number', $product->sold_number) }}" class="form-control">
+                            @error('sold_number')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>

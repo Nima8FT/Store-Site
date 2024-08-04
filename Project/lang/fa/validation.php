@@ -184,5 +184,10 @@ return [
         'price_increase' => 'افزایش قیمت',
         'unit' => 'واحد اندازه گیری',
         'value' => 'مقدار',
+        'receiver' => 'تحویل گیرنده',
+        'deliver' => 'تحویل دهنده',
+        'marketable_number' => 'تعداد قابل فروش',
+        'frozen_number' => 'تعداد رزرو شده',
+        'sold_number' => 'تعداد فروخته شده',
     ],
 ];

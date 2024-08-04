@@ -35,12 +35,11 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">نام کالا</th>
                             <th scope="col">تصویر کالا</th>
-                            <th scope="col">موجودی</th>
-                            <th scope="col">ورودی انبار</th>
-                            <th scope="col">خروجی انبار</th>
+                            <th scope="col">تعداد قابل فروش</th>
+                            <th scope="col">تعداد رزرو شده</th>
+                            <th scope="col">تعداد فروخته شده</th>
                             <th scope="col" class="text-right">
                                 <i class="fa fa-cogs mx-2"></i>
                                 تنظیمات
@@ -48,63 +47,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>سامسونگ</td>
-                            <td><img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="" class="max-height-2">
-                            <td>16</td>
-                            <td>38</td>
-                            <td>22</td>
-                            <td class="text-left">
-                                <a href="{{ route("market.admin.market.store.addToStore") }}"
-                                    class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    افزایش موجودی
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    اصلاح موجودی
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>سامسونگ</td>
-                            <td><img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="" class="max-height-2">
-                            <td>16</td>
-                            <td>38</td>
-                            <td>22</td>
-                            <td class="text-left">
-                                <a href="{{ route("market.admin.market.store.addToStore") }}"
-                                    class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    افزایش موجودی
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    اصلاح موجودی
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>سامسونگ</td>
-                            <td><img src="{{ asset('admin-assets/images/avatar-2.jpg') }}" alt="" class="max-height-2">
-                            <td>16</td>
-                            <td>38</td>
-                            <td>22</td>
-                            <td class="text-left">
-                                <a href="{{ route("market.admin.market.store.addToStore") }}"
-                                    class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    افزایش موجودی
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    اصلاح موجودی
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($products as $product)                        
+                            <tr>
+                                <td>{{$product->name}}</td>
+                                <td><img src="{{ asset($product->image['indexArray'][$product->image['currentImage']]) }}"
+                                        width="50" height="50" alt="" class="max-height-2"></td>
+                                <td>{{$product->marketable_number}}</td>
+                                <td>{{$product->frozen_number}}</td>
+                                <td>{{$product->sold_number}}</td>
+                                <td class="text-left">
+                                    <a href="{{ route("market.store.addToStore", $product->id) }}"
+                                        class="btn btn-primary btn-sm fw-bold">
+                                        <i class="fa fa-edit p-1"></i>
+                                        افزایش موجودی
+                                    </a>
+                                    <a href="{{ route("market.store.edit", $product->id) }}"
+                                        class="btn btn-warning btn-sm mx-3 fw-bold">
+                                        <i class="fa fa-edit p-1"></i>
+                                        اصلاح موجودی
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>

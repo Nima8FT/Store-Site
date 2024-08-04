@@ -112,7 +112,8 @@ Route::prefix('admin')->group(function () {
 
         //store
         Route::resource('/store', StoreController::class);
-        Route::get('add-to-store', [StoreController::class, 'addToStore'])->name('admin.market.store.addToStore');
+        Route::get('/add-to-store/{product}', [StoreController::class, 'addToStore'])->name('store.addToStore');
+        Route::put('/add-to-store/{product}', [StoreController::class, 'addStore'])->name('store.add-store');
     });
 
     Route::prefix('content')->as('content.')->group(function () {
