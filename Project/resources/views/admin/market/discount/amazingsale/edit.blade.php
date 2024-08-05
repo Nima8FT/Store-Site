@@ -31,16 +31,16 @@
             </section>
 
             <section class="main-body-container-bottom">
-                <form action="{{ route('market.amazing-sale.store') }}" method="POST">
+                <form action="{{ route('market.amazing-sale.update', $amazing_sale) }}" method="POST">
                     @csrf
+                    {{method_field('put')}}
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
                             <label for="inputState">انتخاب دسته بندی</label>
                             <select name="product_id" id="inputState" class="form-control">
                                 <option value="">کالا را انتخاب کنید</option>
                                 @foreach ($products as $product)
-                                    <option value="{{ $product->id }}" @if (old('product_id') == $product->id) selected
-                                    @endif>
+                                    <option value="{{ $product->id }}" @if (old('product_id', $amazing_sale->product_id) == $product->id) selected @endif>
                                         {{ $product->name }}
                                     </option>
                                 @endforeach
@@ -48,23 +48,28 @@
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">درصد تخفیف</label>
-                            <input type="text" name="percentage" value="{{ old('percentage') }}" class="form-control">
+                            <input type="text" name="percentage"
+                                value="{{ old('percentage', $amazing_sale->percentage) }}" class="form-control">
                             @error('percentage')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">تاریخ شروع</label>
-                            <input type="text" name="start_date" id="start_date" class="form-control d-none">
-                            <input type="text" class="form-control" id="start_date_view">
+                            <input type="text" name="start_date" id="start_date" class="form-control d-none"
+                                value="{{ $amazing_sale->start_date }}">
+                            <input type="text" class="form-control" id="start_date_view"
+                                value="{{ $amazing_sale->start_date }}">
                             @error('start_date')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 py-2">
                             <label for="">تاریخ پایان</label>
-                            <input type="text" name="end_date" id="end_date" class="form-control d-none">
-                            <input type="text" class="form-control" id="end_date_view">
+                            <input type="text" name="end_date" id="end_date" class="form-control d-none"
+                                value="{{ $amazing_sale->end_date }}">
+                            <input type="text" class="form-control" id="end_date_view"
+                                value="{{ $amazing_sale->end_date }}">
                             @error('end_date')
                                 <small class="text-danger" role="alert">{{$message}}</small>
                             @enderror
@@ -72,8 +77,10 @@
                         <div class="form-group col-12 py-2">
                             <label for="status">وضعیت</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
-                                <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $amazing_sale->status) == 0) selected @endif>غیر فعال
+                                </option>
+                                <option value="1" @if (old('status', $amazing_sale->status) == 1) selected @endif>فعال
+                                </option>
                             </select>
                             @error('status')
                                 <small class="text-danger" role="alert">{{$message}}</small>

@@ -60,6 +60,7 @@ Route::prefix('admin')->group(function () {
             Route::resource('common-discount', CommonDiscountController::class);
             Route::get('common-discount/status/{common_discount}', [CommonDiscountController::class, 'status'])->name('common-discount.status');
             Route::resource('amazing-sale', AmazingSaleController::class);
+            Route::get('amazing-sale/status/{amazing_sale}', [AmazingSaleController::class, 'status'])->name('amazing-sale.status');
         });
         Route::prefix('order')->group(function () {
             Route::get('/', [OrderController::class, 'all'])->name('admin.market.order.all');

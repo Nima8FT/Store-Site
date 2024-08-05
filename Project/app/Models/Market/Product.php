@@ -56,4 +56,9 @@ class Product extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function amazingSales()
+    {
+        return $this->hasMany(AmazingSale::class);
+    }
 }
