@@ -76,8 +76,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/', [PaymentController::class, 'index'])->name('admin.market.payment.all');
             Route::get('/online', [PaymentController::class, 'online'])->name('admin.market.payment.online');
             Route::get('/offline', [PaymentController::class, 'offline'])->name('admin.market.payment.offline');
-            Route::get('/attandance', [PaymentController::class, 'attandance'])->name('admin.market.payment.attandance');
-            Route::get('/confirm', [PaymentController::class, 'confirm'])->name('admin.market.payment.confirm');
+            Route::get('/cash', [PaymentController::class, 'cash'])->name('admin.market.payment.cash');
+            Route::get('/canceled/{payment}', [PaymentController::class, 'canceled'])->name('admin.market.payment.canceled');
+            Route::get('/returned/{payment}', [PaymentController::class, 'returned'])->name('admin.market.payment.returned');
         });
         Route::resource('/product', ProductController::class);
         Route::get('/product/status/{product}', [ProductController::class, 'status'])->name('product.status');

@@ -35,12 +35,13 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">کد تراکنش</th>
-                            <th scope="col">بانک</th>
-                            <th scope="col">پرداخت کننده</th>
+                            <th scope="col">مبلغ</th>
+                            <th scope="col">کاربر تراکنش دهنده</th>
                             <th scope="col">وضعیت پرداخت</th>
                             <th scope="col">نوع پرداخت</th>
+                            <th scope="col">نام معامله</th>
+                            <th scope="col">نام بانک</th>
+                            <th scope="col">گیرنده</th>
                             <th scope="col" class="text-right">
                                 <i class="fa fa-cogs mx-2"></i>
                                 تنظیمات
@@ -48,69 +49,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>23485641</td>
-                            <td>ملی</td>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>تایید شده</td>
-                            <td>انلاین</td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    مشاهده
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    باطل کردن
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-reply p-1"></i>
-                                    برگرداندن
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>23485641</td>
-                            <td>ملی</td>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>تایید شده</td>
-                            <td>انلاین</td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    مشاهده
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    باطل کردن
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-reply p-1"></i>
-                                    برگرداندن
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>23485641</td>
-                            <td>ملی</td>
-                            <td>نیما ملکوتی خواه</td>
-                            <td>تایید شده</td>
-                            <td>انلاین</td>
-                            <td class="text-left">
-                                <a href="#" class="btn btn-primary btn-sm fw-bold">
-                                    <i class="fa fa-edit p-1"></i>
-                                    مشاهده
-                                </a>
-                                <a href="#" class="btn btn-warning btn-sm mx-3 fw-bold">
-                                    باطل کردن
-                                </a>
-                                <a href="#" class="btn btn-danger btn-sm mx-3 fw-bold">
-                                    <i class="fa fa-reply p-1"></i>
-                                    برگرداندن
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach ($payments as $payment)
+                            <tr>
+                                <td>{{ $payment->amount }}</td>
+                                <td>{{ $payment->user->fullName }}</td>
+                                <td>@if($payment->status == 0) پرداخت نشده @elseif($payment->status == 1) پرداخت شده @elseif($payment->status == 2) باطل شده  @elseif($payment->status == 3) برگشت داده شده @endif </td>
+                                <td>@if($payment->type == 0) انلاین @elseif($payment->type == 1) افلا
+                                 ی      ن @elseif($payment->type == 2) در محل @endif </td>
+                                <td>{{ $payment->paymentable->transaction_id ?? '-' }}</td>
+                                <td>{{ $payment->paymentable->gateway ?? '-' }}</td>
+                                <td>{{ $payment->paymentable->cash_receiver ?? '-' }}</td>
+                                <td class="text-left">
+                                    <a href="{{ route('market.admin.market.payment.canceled', $payment->id) }}"
+                                        class="btn btn-warning btn-sm mx-3 fw-bold">
+                                        باطل کردن
+                                    </a>
+                                    <a href="{{ route('market.admin.market.payment.returned', $payment->id) }}" class="btn btn-danger btn-sm mx-3 fw-bold">
+                                        <i class="fa fa-reply p-1"></i>
+                                        برگرداندن
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>

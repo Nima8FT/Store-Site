@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use User\Role;
 use App\Models\Ticket\Ticket;
+use App\Models\Market\Payment;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Ticket\TicketAdmin;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -90,5 +91,9 @@ class User extends Authenticatable
 
     public function role() {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function payments() {
+        return $this->hasMany(Payment::class);
     }
 }

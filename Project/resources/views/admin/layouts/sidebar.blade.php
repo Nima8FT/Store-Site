@@ -51,7 +51,7 @@
                     <a href="{{ route("market.admin.market.payment.all") }}">تمام پرداخت ها</a>
                     <a href="{{ route("market.admin.market.payment.online") }}">پرداخت های آنلاین</a>
                     <a href="{{ route("market.admin.market.payment.offline") }}">پرداخت های آفلاین</a>
-                    <a href="{{ route("market.admin.market.payment.attandance") }}">پرداخت در محل</a>
+                    <a href="{{ route("market.admin.market.payment.cash") }}">پرداخت در محل</a>
                 </section>
             </section>
 
