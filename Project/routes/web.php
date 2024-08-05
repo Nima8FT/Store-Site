@@ -58,6 +58,7 @@ Route::prefix('admin')->group(function () {
         Route::prefix('discount')->group(function () {
             Route::resource('copan', CopanController::class);
             Route::resource('common-discount', CommonDiscountController::class);
+            Route::get('common-discount/status/{common_discount}', [CommonDiscountController::class, 'status'])->name('common-discount.status');
             Route::resource('amazing-sale', AmazingSaleController::class);
         });
         Route::prefix('order')->group(function () {
