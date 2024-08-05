@@ -35,7 +35,7 @@
                     @csrf
                     <div class="row mb-4">
                         <div class="form-group col-md-6 py-2">
-                            <label for="inputState">انتخاب دسته بندی</label>
+                            <label for="inputState">انتخاب کالا</label>
                             <select name="product_id" id="inputState" class="form-control">
                                 <option value="">کالا را انتخاب کنید</option>
                                 @foreach ($products as $product)

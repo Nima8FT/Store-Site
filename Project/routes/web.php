@@ -57,6 +57,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/delivery/status/{delivery}', [DeliveryController::class, 'status'])->name('delivery.status');
         Route::prefix('discount')->group(function () {
             Route::resource('copan', CopanController::class);
+            Route::get('copan/status/{copan}', [CopanController::class, 'status'])->name('copan.status');
             Route::resource('common-discount', CommonDiscountController::class);
             Route::get('common-discount/status/{common_discount}', [CommonDiscountController::class, 'status'])->name('common-discount.status');
             Route::resource('amazing-sale', AmazingSaleController::class);
