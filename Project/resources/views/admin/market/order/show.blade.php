@@ -42,7 +42,8 @@
                                     <i class="fa fa-print"></i>
                                     چاپ
                                 </a>
-                                <a href="{{ route('market.admin.market.order.detail',$order->id) }}" class="btn btn-warning btn-sm text-dark">
+                                <a href="{{ route('market.admin.market.order.detail', $order->id) }}"
+                                    class="btn btn-warning btn-sm text-dark">
                                     <i class="fa fa-book"></i>
                                     جزییات
                                 </a>
@@ -99,13 +100,13 @@
                         <tr class="border-bottom">
                             <th>نوع پرداخت</th>
                             <td class="text-left font-weight-bold">
-                                @if($order->payment_type == 0) انلاین @elseif($order->payment_type == 1) افلاین @elseif($order->payment_type == 2) در محل @endif
+                                {{ $order->payment_type_value ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
                             <th>وضعیت پرداخت</th>
                             <td class="text-left font-weight-bold">
-                                @if($order->payment_status == 0) پرداخت نشده @elseif($order->payment_status == 1) پرداخت شده @elseif($order->payment_status == 2) باطل شده @elseif($order->payment_status == 3)برگشت داده شده @endif
+                                {{ $order->payment_status_value ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
@@ -117,7 +118,7 @@
                         <tr class="border-bottom">
                             <th>وضعیت ارسال</th>
                             <td class="text-left font-weight-bold">
-                                @if ($order->delivery_status == 0) ارسال شده @elseif($order->delivery_status == 1) در حال ارسال @elseif($order->delivery_status == 2) ارسال شده @elseif($order->delivery_status == 3) تحویل شده @endif
+                                {{$order->delivery_status_value ?? '-'}}
                             </td>
                         </tr>
                         <tr class="border-bottom">
@@ -177,7 +178,7 @@
                         <tr class="border-bottom">
                             <th scope="col">وضعیت سفارش</th>
                             <td class="text-left font-weight-bold">
-                                @if ($order->order_status == 0) در انتظار تایید @elseif($order->order_status == 1) تایید نشده @elseif($order->order_status == 2) تایید شده @elseif($order->order_status == 3) باطل شده @elseif($order->order_status == 4) مرجوع شده @elseif($order->order_status == 5) بررسی نشده @endif
+                                {{$order->order_status_value ?? '-'}}
                             </td>
                         </tr>
                     </tbody>
@@ -193,15 +194,15 @@
 @section('script')
 
 <script>
-    $(document).ready(function () { 
-        $('#print').click(function (e) { 
+    $(document).ready(function () {
+        $('#print').click(function (e) {
             printContent('printable');
         });
     });
 
     function printContent(el) {
         var restorePage = $('body').html();
-        var printContent = $('#'+el).clone();
+        var printContent = $('#' + el).clone();
         $('body').empty().html(printContent);
         window.print();
         $('body').html(restorePage);
