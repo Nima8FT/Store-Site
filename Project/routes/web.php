@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin;
 use App\Http\Controllers\Admin\Market\ProductColorController;
 use App\Http\Controllers\Admin\Market\PropertyCategoryValueController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\Ticket\TicketAdminController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
@@ -188,7 +189,11 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('setting', SettingController::class);
 
+    Route::post('notification/readall', [NotificationController::class, 'read'])->name('admin.notification');
+
 });
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

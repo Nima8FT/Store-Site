@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Models\User;
+use App\Notifications\NewUserRegistered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Image\ImageService;
@@ -43,6 +44,11 @@ class CustomerController extends Controller
         }
         $inputs['user_type'] = 0;
         $user = User::create($inputs);
+        $_details = [
+            'message' => 'یک کاربر جدید در سایت ثبت نام کرد',
+        ];
+        $adminUser = User::find(1);
+        $adminUser->notify(new NewUserRegistered($_details));
         return redirect()->route('user.customer.index')->with('toast-success', ' مشتری جدید با موفقیت ساخته شد');
     }
 
