@@ -54,8 +54,7 @@
                                 <td>{{ $payment->amount }}</td>
                                 <td>{{ $payment->user->fullName }}</td>
                                 <td>@if($payment->status == 0) پرداخت نشده @elseif($payment->status == 1) پرداخت شده @elseif($payment->status == 2) باطل شده  @elseif($payment->status == 3) برگشت داده شده @endif </td>
-                                <td>@if($payment->type == 0) انلاین @elseif($payment->type == 1) افلا
-                                 ی      ن @elseif($payment->type == 2) در محل @endif </td>
+                                <td>@if($payment->type == 0) انلاین @elseif($payment->type == 1) افلاین @elseif($payment->type == 2) در محل @endif </td>
                                 <td>{{ $payment->paymentable->transaction_id ?? '-' }}</td>
                                 <td>{{ $payment->paymentable->gateway ?? '-' }}</td>
                                 <td>{{ $payment->paymentable->cash_receiver ?? '-' }}</td>
